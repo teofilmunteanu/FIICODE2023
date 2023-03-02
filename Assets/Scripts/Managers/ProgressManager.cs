@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ProgressManager : MonoBehaviour
 {
@@ -14,15 +15,47 @@ public class ProgressManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            paperCollectedInRoom = new bool[nrOfRooms];
-            lastUnlockedRoom = 1;
-            currentSceneIndex = 0;
+            PaperCollectedInRoom = new bool[nrOfRooms];
+            UnlockedRooms = new bool[] { true, false, false, false, false };
+            setSceneIndex();
         }
     }
 
-    private int nrOfRooms = 5;
+    private const int nrOfRooms = 5;
 
-    public int currentSceneIndex;
-    public int lastUnlockedRoom;
-    public bool[] paperCollectedInRoom;
+    public bool[] UnlockedRooms { get; set; }
+    public bool[] PaperCollectedInRoom { get; set; }
+    public Vector3 LastPosition { get; set; }
+
+
+    public int CurrentSceneIndex { get; /*private */set; }
+
+    public void setSceneIndex()
+    {
+        string name = SceneManager.GetActiveScene().name;
+
+        switch (name)
+        {
+            case "Hallway":
+                CurrentSceneIndex = 0;
+                break;
+            case "Room1":
+                CurrentSceneIndex = 1;
+                break;
+            case "Room2":
+                CurrentSceneIndex = 2;
+                break;
+            case "Room3":
+                CurrentSceneIndex = 3;
+                break;
+            case "Room4":
+                CurrentSceneIndex = 4;
+                break;
+            case "Room5":
+                CurrentSceneIndex = 5;
+                break;
+            default:
+                return;
+        }
+    }
 }
