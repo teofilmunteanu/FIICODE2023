@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement2D : MonoBehaviour
@@ -20,7 +18,7 @@ public class PlayerMovement2D : MonoBehaviour
 
     }
 
-     void FixedUpdate()
+    void FixedUpdate()
     {
         //Movement
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
