@@ -22,6 +22,13 @@ public class SceneChanger : MonoBehaviour
     [SerializeField]
     private GameObject player;
 
+    private void Start()
+    {
+        if (ProgressManager.Instance.CurrentSceneIndex == 0)
+        {
+            player.transform.localPosition = ProgressManager.Instance.LastPosition;
+        }
+    }
 
     void OnCollisionEnter(Collision collision)
     {
@@ -47,7 +54,7 @@ public class SceneChanger : MonoBehaviour
         {
             if (ProgressManager.Instance.UnlockedRooms[targetRoomNr - 1])
             {
-                ProgressManager.Instance.LastPosition = transform.localPosition;
+                ProgressManager.Instance.LastPosition = player.transform.localPosition - new Vector3(0, 0, 5);
                 StartCoroutine(LoadSceneAsync(scenes[targetRoomNr]));
             }
             else
@@ -64,7 +71,7 @@ public class SceneChanger : MonoBehaviour
     public void loadMainScene()
     {
         StartCoroutine(LoadSceneAsync(scenes[0]));
-        player.transform.localPosition = ProgressManager.Instance.LastPosition;
+        //player.transform.localPosition = ProgressManager.Instance.LastPosition;
     }
 
     public void changeScene()

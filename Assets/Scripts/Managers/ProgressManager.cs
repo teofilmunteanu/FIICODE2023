@@ -16,8 +16,10 @@ public class ProgressManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
             PaperCollectedInRoom = new bool[nrOfRooms];
-            UnlockedRooms = new bool[] { true, false, false, false, false };
+            //for testing I set first two to "true", only set the first one
+            UnlockedRooms = new bool[] { true, true, false, false, false };
             setSceneIndex();
+            LastPosition = new Vector3(500, 7, 500);
         }
     }
 
