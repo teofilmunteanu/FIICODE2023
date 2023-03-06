@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -43,7 +41,6 @@ public class SceneChangeManager : MonoBehaviour
         "Room5"
     };
 
-    public readonly Vector3 InitialRoomPos = new Vector3(500, 1, 500);
     public readonly Vector3 InitialHallwayPos = new Vector3(500, 7, 500);
 
     public Vector3 LastPlayerPosition { get; set; }
@@ -96,12 +93,10 @@ public class SceneChangeManager : MonoBehaviour
     //    }
     //}
 
-    public void loadRoom(int targetRoomNr)
+    public void LoadRoom(int targetRoomNr)
     {
         try
         {
-            LastPlayerPosition = GameObject.FindGameObjectWithTag("Player").transform.position + new Vector3(0, 0, -5);
-
             //switch (targetRoomNr)
             //{
             //    case 1:
@@ -121,7 +116,7 @@ public class SceneChangeManager : MonoBehaviour
                 Debug.Log("Room inaccessible, complete previous rooms.");
             }
         }
-        catch(NullReferenceException ex)
+        catch (NullReferenceException ex)
         {
             Debug.LogException(ex);
         }
@@ -131,10 +126,15 @@ public class SceneChangeManager : MonoBehaviour
         }
     }
 
-    public void loadMainScene()
+    public void LoadMainScene()
     {
         //StartCoroutine(LoadSceneAsync(scenes[0]));
         SceneManager.LoadScene(scenes[0]);
+    }
+
+    public void UpdateLastPlayerPosition()
+    {
+        LastPlayerPosition = GameObject.FindGameObjectWithTag("Player").transform.position + new Vector3(0, 0, -5);
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)

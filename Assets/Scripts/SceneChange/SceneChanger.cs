@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
@@ -20,21 +17,20 @@ public class SceneChanger : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            changeScene();
+            ChangeScene();
         }
     }
 
-    public void changeScene()
+    public void ChangeScene()
     {
         if (_sceneChangeManager.CurrentSceneIndex == 0)
         {
-            //_sceneChangeManager.CurrentSceneIndex = targetRoomNr;
-            _sceneChangeManager.loadRoom(targetRoomNr);
+            _sceneChangeManager.UpdateLastPlayerPosition();
+            _sceneChangeManager.LoadRoom(targetRoomNr);
         }
         else
         {
-            //_sceneChangeManager.CurrentSceneIndex = 0;
-            _sceneChangeManager.loadMainScene();
+            _sceneChangeManager.LoadMainScene();
         }
     }
 }
