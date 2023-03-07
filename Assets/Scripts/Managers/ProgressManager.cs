@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ProgressManager : MonoBehaviour
 {
@@ -27,4 +26,19 @@ public class ProgressManager : MonoBehaviour
 
     public bool[] UnlockedRooms { get; set; }
     public bool[] PaperCollectedInRoom { get; set; }
+
+    public void CompleteRoom()
+    {
+        //set as complete
+        //unlock next room
+
+        //make prefabs that complete rooms
+    }
+
+    public void AddFoundPaper()
+    {
+        //add paper to PaperCollectedInRoom by room
+
+        //make paper prefabs
+    }
 }

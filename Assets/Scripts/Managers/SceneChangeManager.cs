@@ -18,7 +18,7 @@ public class SceneChangeManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
             //CurrentSceneIndex = 0;
-            //only for development, it shouldnt start elsewhere otherwise, so no if needed
+            //only for development, it shouldnt start elsewhere otherwise, so no if needed, and it should be taken from the save file
             SetSceneIndex();
             if (CurrentSceneIndex == 0)
             {
