@@ -4,6 +4,13 @@ using UnityEngine.UI;
 
 public class OptionsJumble : MonoBehaviour
 {
+    private string originalText;
+
+    public void Awake()
+    {
+        originalText = this.GetComponent<Text>().text;
+    }
+
     private void OnEnable()
     {
         StartCoroutine("ShuffleLetter");
@@ -11,10 +18,8 @@ public class OptionsJumble : MonoBehaviour
 
     IEnumerator ShuffleLetter()
     {
-        string originalText = this.GetComponent<Text>().text;
         while (true)
         {
-            Debug.Log("shuffleLoop");
             char[] text = this.GetComponent<Text>().text.ToCharArray();
 
             char temp;
@@ -32,7 +37,7 @@ public class OptionsJumble : MonoBehaviour
             yield return new WaitForSecondsRealtime(0.5f);
 
             this.GetComponent<Text>().text = originalText;
-            yield return new WaitForSecondsRealtime(1f);
+            yield return new WaitForSecondsRealtime(0.5f);
         }
     }
 }
