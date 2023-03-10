@@ -146,4 +146,10 @@ public class SceneChangeManager : MonoBehaviour
             GameObject.FindGameObjectWithTag("Player").transform.position = LastPlayerPosition;
         }
     }
+
+
+    public void test()
+    {
+        Debug.Log("test");
+    }
 }
