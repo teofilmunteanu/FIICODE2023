@@ -1,25 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
     SceneChangeManager sceneChangeManager;
+    ProgressManager progressManager;
+
     private void Start()
     {
-        Debug.Log("MainMenu");
         sceneChangeManager = SceneChangeManager.Instance;
+        progressManager = ProgressManager.Instance;
     }
 
     public void NewGame()
     {
-        SceneChangeManager.Instance.test();
-        //reset everything
+        sceneChangeManager.LoadMainScene();
+        progressManager.ResetProgress();
     }
 
     public void LoadGame()
     {
         sceneChangeManager.LoadMainScene();
+
         //get data from save file
         //load selected save file
     }

@@ -6,11 +6,11 @@ public class SceneChanger : MonoBehaviour
     [SerializeField]
     private int targetRoomNr;
 
-    private SceneChangeManager _sceneChangeManager;
+    private SceneChangeManager sceneChangeManager;
 
     private void Start()
     {
-        _sceneChangeManager = SceneChangeManager.Instance;
+        sceneChangeManager = SceneChangeManager.Instance;
     }
 
     void OnCollisionEnter(Collision collision)
@@ -23,14 +23,16 @@ public class SceneChanger : MonoBehaviour
 
     public void ChangeScene()
     {
-        if (_sceneChangeManager.CurrentSceneIndex == 0)
+        if (sceneChangeManager.CurrentSceneIndex == 0)
         {
-            _sceneChangeManager.UpdateLastPlayerPosition();
-            _sceneChangeManager.LoadRoom(targetRoomNr);
+            Vector3 doorPos = this.transform.position;
+            Vector3 offset = new Vector3(0, 0, -2);
+            sceneChangeManager.UpdateLastPlayerPosition(doorPos + offset);
+            sceneChangeManager.LoadRoom(targetRoomNr);
         }
         else
         {
-            _sceneChangeManager.LoadMainScene();
+            sceneChangeManager.LoadMainScene();
         }
     }
 }

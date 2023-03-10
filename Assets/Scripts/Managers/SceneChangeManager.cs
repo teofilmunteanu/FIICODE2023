@@ -17,8 +17,10 @@ public class SceneChangeManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            //CurrentSceneIndex = 0;
+            //CurrentSceneIndex = -1;
             //only for development, it shouldnt start elsewhere otherwise, so no if needed, and it should be taken from the save file
+
+            //is it needed?
             SetSceneIndex();
             if (CurrentSceneIndex == 0)
             {
@@ -53,6 +55,9 @@ public class SceneChangeManager : MonoBehaviour
 
         switch (name)
         {
+            case "MainMenu":
+                CurrentSceneIndex = -1;
+                break;
             case "Hallway":
                 CurrentSceneIndex = 0;
                 break;
@@ -132,24 +137,28 @@ public class SceneChangeManager : MonoBehaviour
         SceneManager.LoadScene(scenes[0]);
     }
 
-    public void UpdateLastPlayerPosition()
-    {
-        LastPlayerPosition = GameObject.FindGameObjectWithTag("Player").transform.position + new Vector3(0, 0, -5);
-    }
-
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         SetSceneIndex();
 
-        if (CurrentSceneIndex == 0)
+        if (IsMainScene())
         {
             GameObject.FindGameObjectWithTag("Player").transform.position = LastPlayerPosition;
         }
     }
 
-
-    public void test()
+    private bool IsMainScene()
     {
-        Debug.Log("test");
+        return CurrentSceneIndex == 0;
+    }
+
+    public void UpdateLastPlayerPosition(Vector3 position)
+    {
+        LastPlayerPosition = position;
+    }
+
+    public void ResetPosition()
+    {
+        LastPlayerPosition = InitialHallwayPos;
     }
 }

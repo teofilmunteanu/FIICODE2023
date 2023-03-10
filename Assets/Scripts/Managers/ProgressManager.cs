@@ -13,6 +13,7 @@ public class ProgressManager : MonoBehaviour
         else
         {
             Instance = this;
+
             DontDestroyOnLoad(gameObject);
 
             PaperCollectedInRoom = new bool[nrOfRooms];
@@ -26,6 +27,14 @@ public class ProgressManager : MonoBehaviour
 
     public bool[] UnlockedRooms { get; set; }
     public bool[] PaperCollectedInRoom { get; set; }
+
+
+    public void ResetProgress()
+    {
+        UnlockedRooms = new bool[] { true, false, false, false, false };
+        PaperCollectedInRoom = new bool[nrOfRooms];
+        SceneChangeManager.Instance.ResetPosition();
+    }
 
     public void CompleteRoom()
     {
