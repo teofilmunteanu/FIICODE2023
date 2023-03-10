@@ -36,6 +36,14 @@ public class ProgressManager : MonoBehaviour
         SceneChangeManager.Instance.ResetPosition();
     }
 
+    public void LoadProgress()
+    {
+        //all of these should be taken from save file
+        UnlockedRooms = new bool[] { true, false, false, false, false };
+        PaperCollectedInRoom = new bool[nrOfRooms];
+        SceneChangeManager.Instance.UpdateLastPlayerPosition(new Vector3(500, 1, 500));
+    }
+
     public void CompleteRoom()
     {
         //set as complete

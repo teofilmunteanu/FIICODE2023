@@ -18,14 +18,7 @@ public class SceneChangeManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
             //CurrentSceneIndex = -1;
-            //only for development, it shouldnt start elsewhere otherwise, so no if needed, and it should be taken from the save file
-
-            //is it needed?
             SetSceneIndex();
-            if (CurrentSceneIndex == 0)
-            {
-                LastPlayerPosition = InitialHallwayPos;
-            }
 
             SceneManager.sceneLoaded += OnSceneLoaded;
         }

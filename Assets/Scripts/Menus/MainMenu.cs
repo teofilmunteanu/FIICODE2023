@@ -13,16 +13,14 @@ public class MainMenu : MonoBehaviour
 
     public void NewGame()
     {
-        sceneChangeManager.LoadMainScene();
         progressManager.ResetProgress();
+        sceneChangeManager.LoadMainScene();
     }
 
     public void LoadGame()
     {
+        progressManager.LoadProgress();
         sceneChangeManager.LoadMainScene();
-
-        //get data from save file
-        //load selected save file
     }
 
     public void QuitGame()
