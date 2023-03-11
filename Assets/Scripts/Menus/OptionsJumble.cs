@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+//ADD OPTION TO DEACTIVATE THIS(might be hard to read for some people)
 public class OptionsJumble : MonoBehaviour
 {
     private string originalText;
@@ -34,10 +35,10 @@ public class OptionsJumble : MonoBehaviour
             }
 
             this.GetComponent<Text>().text = new string(text);
-            yield return new WaitForSecondsRealtime(0.5f);
+            yield return new WaitForSecondsRealtime(1f);
 
             this.GetComponent<Text>().text = originalText;
-            yield return new WaitForSecondsRealtime(0.5f);
+            yield return new WaitForSecondsRealtime(1f);
         }
     }
 }

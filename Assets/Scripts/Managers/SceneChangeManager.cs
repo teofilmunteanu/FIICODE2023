@@ -26,7 +26,8 @@ public class SceneChangeManager : MonoBehaviour
     #endregion
 
     #region Fields
-    private readonly string[] scenes = new string[]
+    private readonly string mainMenuScene = "MainMenu";
+    private readonly string[] gameScenes = new string[]
     {
         "Hallway",
         "Room1",
@@ -107,7 +108,7 @@ public class SceneChangeManager : MonoBehaviour
             if (ProgressManager.Instance.UnlockedRooms[targetRoomNr - 1])
             {
                 //StartCoroutine(LoadSceneAsync(scenes[targetRoomNr]));
-                SceneManager.LoadScene(scenes[targetRoomNr]);
+                SceneManager.LoadScene(gameScenes[targetRoomNr]);
             }
             else
             {
@@ -127,7 +128,12 @@ public class SceneChangeManager : MonoBehaviour
     public void LoadMainScene()
     {
         //StartCoroutine(LoadSceneAsync(scenes[0]));
-        SceneManager.LoadScene(scenes[0]);
+        SceneManager.LoadScene(gameScenes[0]);
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(mainMenuScene);
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)

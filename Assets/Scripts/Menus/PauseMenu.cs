@@ -8,6 +8,13 @@ public class PauseMenu : MonoBehaviour
     public GameObject principalMenu;
     public GameObject optionsMenu;
 
+    private SceneChangeManager sceneChangeManager;
+
+    private void Start()
+    {
+        sceneChangeManager = SceneChangeManager.Instance;
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -47,8 +54,6 @@ public class PauseMenu : MonoBehaviour
     public void SaveAndExit()
     {
         SavesManager.SaveProgress();
-        Debug.Log("get to main menu");
-
-        Resume(); //only for testing, should return to menu
+        sceneChangeManager.LoadMainMenu();
     }
 }
