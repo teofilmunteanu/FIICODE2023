@@ -18,7 +18,7 @@ namespace Assets.Scripts.Managers
             ProgressManager progressManager = ProgressManager.Instance;
             SceneChangeManager sceneChangeManager = SceneChangeManager.Instance;
 
-            ProgressDTO progressDTO = new ProgressDTO(progressManager.UnlockedRooms, progressManager.PaperCollectedInRoom, sceneChangeManager.LastPlayerPosition);
+            ProgressDTO progressDTO = new ProgressDTO(progressManager.CompletedRooms, progressManager.PaperCollectedInRoom, sceneChangeManager.LastPlayerPosition);
             binaryFormatter.Serialize(stream, progressDTO);
 
             Debug.Log("Saved in " + Application.persistentDataPath);

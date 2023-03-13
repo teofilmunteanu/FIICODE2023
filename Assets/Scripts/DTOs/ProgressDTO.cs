@@ -5,14 +5,14 @@ namespace Assets.Scripts.DTOs
     [System.Serializable]
     public class ProgressDTO
     {
-        public bool[] UnlockedRooms { get; set; }
+        public bool[] CompletedRooms { get; set; }
         public bool[] PaperCollectedInRoom { get; set; }
         public float[] Position { get; set; }
 
-        public ProgressDTO(bool[] unlockedRooms, bool[] papersCollectedInRoom, Vector3 lastPlayerPos)
+        public ProgressDTO(bool[] completedRooms, bool[] papersCollectedInRoom, Vector3 lastPlayerPos)
         {
 
-            UnlockedRooms = unlockedRooms;
+            CompletedRooms = completedRooms;
             PaperCollectedInRoom = papersCollectedInRoom;
             Position = new float[]
             {

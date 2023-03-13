@@ -1,4 +1,3 @@
-using Assets.Scripts.Managers;
 using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
@@ -51,9 +50,8 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
     }
 
-    public void SaveAndExit()
+    public void Exit()
     {
-        SavesManager.SaveProgress();
         sceneChangeManager.LoadMainMenu();
     }
 }
