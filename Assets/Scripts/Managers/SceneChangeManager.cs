@@ -97,7 +97,7 @@ public class SceneChangeManager : MonoBehaviour
         {
             UpdateLastPlayerPosition(lastPlayerPosition);
 
-            if (targetRoomNr == 1 || ProgressManager.Instance.CompletedRooms[targetRoomNr - 2])
+            if (targetRoomNr == 1 || IsRoomCompleted(targetRoomNr - 1))
             {
                 //StartCoroutine(LoadSceneAsync(scenes[targetRoomNr]));
                 SceneManager.LoadScene(gameScenes[targetRoomNr]);
@@ -124,6 +124,11 @@ public class SceneChangeManager : MonoBehaviour
         {
             Debug.Log("Invalid room. Error:" + ex.Message);
         }
+    }
+
+    bool IsRoomCompleted(int roomNr)
+    {
+        return ProgressManager.Instance.CompletedRooms[roomNr - 1];
     }
 
     public void LoadMainScene()
