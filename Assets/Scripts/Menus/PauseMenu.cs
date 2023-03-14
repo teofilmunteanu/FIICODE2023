@@ -12,6 +12,10 @@ public class PauseMenu : MonoBehaviour
     private void Start()
     {
         sceneChangeManager = SceneChangeManager.Instance;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Time.timeScale = 1;
+        GameIsPaused = false;
     }
 
     void Update()
