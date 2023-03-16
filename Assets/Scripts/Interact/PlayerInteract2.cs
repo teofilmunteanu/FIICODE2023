@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInteract2 : MonoBehaviour
@@ -8,7 +6,7 @@ public class PlayerInteract2 : MonoBehaviour
     private Transform cam;
 
     [SerializeField]
-    private float distance=3f;
+    private float distance = 3f;
 
     [SerializeField]
     private LayerMask mask;
@@ -22,7 +20,7 @@ public class PlayerInteract2 : MonoBehaviour
     void Start()
     {
         playerUI = GetComponent<PlayerUI>();
-        inputManager= GetComponent<InputManager>();
+        inputManager = GetComponent<InputManager>();
     }
 
     // Update is called once per frame
@@ -33,13 +31,14 @@ public class PlayerInteract2 : MonoBehaviour
         Ray ray = new Ray(cam.position, cam.forward);
         Debug.DrawRay(ray.origin, ray.direction * distance, Color.red);
         RaycastHit hitInfo;
-        if(Physics.Raycast(ray, out hitInfo, distance, mask))
+        if (Physics.Raycast(ray, out hitInfo, distance, mask))
         {
-            if(hitInfo.collider.GetComponent<Interactable>() != null)
+            if (hitInfo.collider.GetComponent<Interactable>() != null)
             {
                 Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
                 playerUI.UpdateText(interactable.promptMessage);
-                if(inputManager.firstPerson.Interact.triggered)
+
+                if (inputManager.firstPerson.Interact.triggered)
                 {
                     interactable.BaseInteract();
                 }
