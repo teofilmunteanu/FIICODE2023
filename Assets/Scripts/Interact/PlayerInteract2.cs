@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerInteract2 : MonoBehaviour
 {
     [SerializeField]
-    private Camera cam;
+    private Transform cam;
 
     [SerializeField]
     private float distance=3f;
@@ -30,7 +30,7 @@ public class PlayerInteract2 : MonoBehaviour
     {
         playerUI.UpdateText(string.Empty);
 
-        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
+        Ray ray = new Ray(cam.position, cam.forward);
         Debug.DrawRay(ray.origin, ray.direction * distance, Color.red);
         RaycastHit hitInfo;
         if(Physics.Raycast(ray, out hitInfo, distance, mask))
