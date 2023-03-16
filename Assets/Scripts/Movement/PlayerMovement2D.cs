@@ -43,6 +43,7 @@ public class PlayerMovement2D : MonoBehaviour
             yRot = 0;
         }
 
+        rb.transform.transform.localRotation = Quaternion.identity;
         orintinatorTransform.rotation = Quaternion.Euler(0, yRot, 0);
     }
 
