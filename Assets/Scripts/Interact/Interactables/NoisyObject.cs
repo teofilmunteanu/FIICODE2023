@@ -21,6 +21,5 @@ public class NoisyObject : Interactable
     {
         Debug.Log("sprite inspector");
         playerUI.ActivateSpriteInspector();
-
     }
 }

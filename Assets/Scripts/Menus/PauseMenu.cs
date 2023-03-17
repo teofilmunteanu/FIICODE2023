@@ -24,32 +24,34 @@ public class PauseMenu : MonoBehaviour
         {
             if (GameIsPaused)
             {
+                pauseMenu.SetActive(false);
+
                 Resume();
             }
             else
             {
+                principalMenu.SetActive(true);
+                optionsMenu.SetActive(false);
+
+                pauseMenu.SetActive(true);
+
                 Pause();
             }
         }
     }
 
-    public void Resume()
+    public static void Resume()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        pauseMenu.SetActive(false);
         Time.timeScale = 1;
         GameIsPaused = false;
     }
 
-    private void Pause()
+    public static void Pause()
     {
-        principalMenu.SetActive(true);
-        optionsMenu.SetActive(false);
-
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        pauseMenu.SetActive(true);
         Time.timeScale = 0;
         GameIsPaused = true;
     }
