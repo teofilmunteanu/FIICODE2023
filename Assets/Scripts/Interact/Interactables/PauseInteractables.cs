@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Scripts.Managers;
 using UnityEngine;
 
 public abstract class PauseInteractables : Interactable
@@ -7,13 +6,13 @@ public abstract class PauseInteractables : Interactable
     public override void Interact()
     {
         Debug.Log("Paused");
-        if (PauseMenu.GameIsPaused)
+        if (PauseManager.GameIsPaused)
         {
-            PauseMenu.Resume();
+            PauseManager.Resume();
         }
         else
         {
-            PauseMenu.Pause();
+            PauseManager.Pause();
         }
     }
 }

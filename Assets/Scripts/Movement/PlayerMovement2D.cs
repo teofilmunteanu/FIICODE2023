@@ -1,3 +1,4 @@
+using Assets.Scripts.Managers;
 using UnityEngine;
 
 public class PlayerMovement2D : MonoBehaviour
@@ -30,7 +31,7 @@ public class PlayerMovement2D : MonoBehaviour
         rb.transform.transform.localRotation = Quaternion.identity;
 
         //rotation shouldn't be updated when paused
-        if (!PauseMenu.GameIsPaused)
+        if (!PauseManager.GameIsPaused)
         {
             if (movement.x < 0)
             {

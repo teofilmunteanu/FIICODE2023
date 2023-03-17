@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Scripts.Managers;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -19,7 +18,7 @@ public class ModalUI : MonoBehaviour, IDeselectHandler, IPointerEnterHandler, IP
     {
         if (!mouseOver)
         {
-            PauseMenu.Resume();
+            PauseManager.Resume();
             modalAnimator.SetTrigger("Open");
         }
     }
