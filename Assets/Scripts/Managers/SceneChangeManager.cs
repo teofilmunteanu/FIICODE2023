@@ -17,13 +17,7 @@ public class SceneChangeManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            //CurrentSceneIndex = 0;
-            //only for development, it shouldnt start elsewhere otherwise, so no if needed
             SetSceneIndex();
-            if (CurrentSceneIndex == 0)
-            {
-                LastPlayerPosition = InitialHallwayPos;
-            }
 
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
@@ -31,7 +25,8 @@ public class SceneChangeManager : MonoBehaviour
     #endregion
 
     #region Fields
-    private readonly string[] scenes = new string[]
+    private readonly string mainMenuScene = "MainMenu";
+    private readonly string[] gameScenes = new string[]
     {
         "Hallway",
         "Room1",
@@ -44,7 +39,7 @@ public class SceneChangeManager : MonoBehaviour
     public readonly Vector3 InitialHallwayPos = new Vector3(500, 7, 500);
 
     public Vector3 LastPlayerPosition { get; set; }
-    public int CurrentSceneIndex { get; /*private */set; }
+    public int CurrentSceneIndex { get; private set; }
     #endregion fields
 
     public void SetSceneIndex()
@@ -53,6 +48,9 @@ public class SceneChangeManager : MonoBehaviour
 
         switch (name)
         {
+            case "MainMenu":
+                CurrentSceneIndex = -1;
+                break;
             case "Hallway":
                 CurrentSceneIndex = 0;
                 break;
@@ -93,23 +91,25 @@ public class SceneChangeManager : MonoBehaviour
     //    }
     //}
 
-    public void LoadRoom(int targetRoomNr)
+    public void LoadRoom(int targetRoomNr, Vector3 lastPlayerPosition)
     {
         try
         {
-            //switch (targetRoomNr)
-            //{
-            //    case 1:
-            //      //set to pos1
-            //    case 2:
-            //      //set to pos2
-            //    ...
-            //}
+            UpdateLastPlayerPosition(lastPlayerPosition);
 
-            if (ProgressManager.Instance.UnlockedRooms[targetRoomNr - 1])
+            if (targetRoomNr == 1 || IsRoomCompleted(targetRoomNr - 1))
             {
                 //StartCoroutine(LoadSceneAsync(scenes[targetRoomNr]));
-                SceneManager.LoadScene(scenes[targetRoomNr]);
+                SceneManager.LoadScene(gameScenes[targetRoomNr]);
+
+                //switch (targetRoomNr)
+                //{
+                //    case 1:
+                //      //set to pos1
+                //    case 2:
+                //      //set to pos2
+                //    ...
+                //}
             }
             else
             {
@@ -126,24 +126,44 @@ public class SceneChangeManager : MonoBehaviour
         }
     }
 
+    bool IsRoomCompleted(int roomNr)
+    {
+        return ProgressManager.Instance.CompletedRooms[roomNr - 1];
+    }
+
     public void LoadMainScene()
     {
         //StartCoroutine(LoadSceneAsync(scenes[0]));
-        SceneManager.LoadScene(scenes[0]);
+        SceneManager.LoadScene(gameScenes[0]);
     }
 
-    public void UpdateLastPlayerPosition()
+    public void LoadMainMenu()
     {
-        LastPlayerPosition = GameObject.FindGameObjectWithTag("Player").transform.position + new Vector3(0, 0, -5);
+        SceneManager.LoadScene(mainMenuScene);
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         SetSceneIndex();
 
-        if (CurrentSceneIndex == 0)
+        if (IsMainScene())
         {
             GameObject.FindGameObjectWithTag("Player").transform.position = LastPlayerPosition;
         }
+    }
+
+    public bool IsMainScene()
+    {
+        return CurrentSceneIndex == 0;
+    }
+
+    public void UpdateLastPlayerPosition(Vector3 position)
+    {
+        LastPlayerPosition = position;
+    }
+
+    public void ResetPosition()
+    {
+        LastPlayerPosition = InitialHallwayPos;
     }
 }
