@@ -22,18 +22,16 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            pauseMenu.SetActive(!GameIsPaused);
+
             if (GameIsPaused)
             {
-                pauseMenu.SetActive(false);
-
                 Resume();
             }
             else
             {
                 principalMenu.SetActive(true);
                 optionsMenu.SetActive(false);
-
-                pauseMenu.SetActive(true);
 
                 Pause();
             }

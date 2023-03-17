@@ -9,7 +9,7 @@ public class KeyPadManager : MonoBehaviour
     private string passCode;
 
     [SerializeField]
-    private int characterLimit=5;
+    private int characterLimit = 5;
 
     [SerializeField]
     TMP_InputField keyInputField;
@@ -18,6 +18,7 @@ public class KeyPadManager : MonoBehaviour
     private UnityEvent unlockEvent;
 
     private int inputCount;
+    private readonly string wrongPrompt = "WRONG";
 
     private void Start()
     {
@@ -26,8 +27,13 @@ public class KeyPadManager : MonoBehaviour
 
     public void keyButton(string key)
     {
-        if(inputCount< keyInputField.characterLimit)
+        if (inputCount < keyInputField.characterLimit)
         {
+            if (keyInputField.text == wrongPrompt)
+            {
+                resetInputField();
+            }
+
             keyInputField.text += key;
             inputCount++;
         }
@@ -41,18 +47,18 @@ public class KeyPadManager : MonoBehaviour
         }
         else
         {
-            keyInputField.text = "WRONG";
-            
+            keyInputField.text = wrongPrompt;
+
         }
     }
 
 
     public void cancelButton()
     {
-        resetInpuField();
+        resetInputField();
     }
 
-    private void resetInpuField()
+    private void resetInputField()
     {
         keyInputField.text = string.Empty;
         inputCount = 0;

@@ -26,24 +26,30 @@ public class PlayerMovement2D : MonoBehaviour
         movement.y = 0;
         movement.z = Input.GetAxisRaw("Vertical");
 
-        if (movement.x < 0)
+        //keeps player from rotating on x/z in 2d(unnecessary if using 2d game objects)
+        rb.transform.transform.localRotation = Quaternion.identity;
+
+        //rotation shouldn't be updated when paused
+        if (!PauseMenu.GameIsPaused)
         {
-            yRot = -90;
-        }
-        else if (movement.x > 0)
-        {
-            yRot = 90;
-        }
-        else if (movement.z < 0)
-        {
-            yRot = 180;
-        }
-        else if (movement.z > 0)
-        {
-            yRot = 0;
+            if (movement.x < 0)
+            {
+                yRot = -90;
+            }
+            else if (movement.x > 0)
+            {
+                yRot = 90;
+            }
+            else if (movement.z < 0)
+            {
+                yRot = 180;
+            }
+            else if (movement.z > 0)
+            {
+                yRot = 0;
+            }
         }
 
-        rb.transform.transform.localRotation = Quaternion.identity;
         orintinatorTransform.rotation = Quaternion.Euler(0, yRot, 0);
     }
 

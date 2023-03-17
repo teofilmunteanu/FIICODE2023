@@ -36,7 +36,9 @@ public class PlayerInteract2 : MonoBehaviour
             if (hitInfo.collider.GetComponent<Interactable>() != null)
             {
                 Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
+
                 playerUI.UpdatePromptText(interactable.promptMessage);
+
                 if (interactable.GetComponent<SpriteRenderer>() != null)
                 {
                     playerUI.InspectedSprite = interactable.GetComponent<SpriteRenderer>().sprite;

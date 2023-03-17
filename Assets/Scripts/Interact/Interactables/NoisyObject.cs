@@ -1,25 +1,14 @@
 using UnityEngine;
 
-public class NoisyObject : Interactable
+public class NoisyObject : PauseInteractables
 {
     [SerializeField]
     private PlayerUI playerUI;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public override void Interact()
     {
-        Debug.Log("sprite inspector");
+        base.Interact();
+
         playerUI.ActivateSpriteInspector();
     }
 }

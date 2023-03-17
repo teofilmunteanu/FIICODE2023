@@ -25,8 +25,8 @@ public class PlayerUI : MonoBehaviour
 
     public void ActivateSpriteInspector()
     {
-        inspectSpriteUI.enabled = true;
         inspectSpriteUI.sprite = InspectedSprite;
+        inspectSpriteUI.enabled = true;
     }
 
     public void ExitSpriteInspector()

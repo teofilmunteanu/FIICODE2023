@@ -1,24 +1,15 @@
 using UnityEngine;
 
-public class Keypad : Interactable
+public class Keypad : PauseInteractables
 {
     [SerializeField]
     Animator keypadAnimator;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public override void Interact()
     {
+        base.Interact();
+
         keypadAnimator.SetTrigger("Open");
     }
 }
