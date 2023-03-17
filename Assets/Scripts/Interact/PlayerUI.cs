@@ -1,20 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
     [SerializeField]
-    private Text promptText;
-    // Start is called before the first frame update
-    void Start()
-    {
+    private Text promptTextUI;
 
+
+    [SerializeField]
+    private Image inspectSpriteUI;
+
+    public Sprite InspectedSprite { get; set; }
+
+
+    private void Start()
+    {
+        inspectSpriteUI.enabled = false;
     }
 
-    public void UpdateText(string promptMessage)
+    public void UpdatePromptText(string promptMessage)
     {
-        promptText.text = promptMessage;
+        promptTextUI.text = promptMessage;
+    }
+
+    public void ActivateSpriteInspector()
+    {
+        inspectSpriteUI.enabled = true;
+        inspectSpriteUI.sprite = InspectedSprite;
+    }
+
+    public void ExitSpriteInspector()
+    {
+        inspectSpriteUI.enabled = false;
     }
 }

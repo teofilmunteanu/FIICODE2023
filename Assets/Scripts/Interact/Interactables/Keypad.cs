@@ -17,9 +17,8 @@ public class Keypad : Interactable
 
     }
 
-    protected override void Interact()
+    public override void Interact()
     {
-        Debug.Log("Interact with " + gameObject.name);
         keypadAnimator.SetTrigger("Open");
     }
 }
