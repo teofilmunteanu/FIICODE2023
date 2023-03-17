@@ -19,6 +19,10 @@ public class SceneChangeManager : MonoBehaviour
 
             SetSceneIndex();
 
+            // only for testing
+            if (SceneManager.GetActiveScene().name == "Room1 merge beta")
+                LastPlayerPosition = new Vector3(500, 0.01f, 500);
+
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
     }
