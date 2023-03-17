@@ -6,17 +6,11 @@ public class PlayerUI : MonoBehaviour
     [SerializeField]
     private Text promptTextUI;
 
-
     [SerializeField]
-    private Image inspectSpriteUI;
+    private GameObject spriteContainerUI;
 
     public Sprite InspectedSprite { get; set; }
 
-
-    private void Start()
-    {
-        inspectSpriteUI.enabled = false;
-    }
 
     public void UpdatePromptText(string promptMessage)
     {
@@ -25,12 +19,17 @@ public class PlayerUI : MonoBehaviour
 
     public void ActivateSpriteInspector()
     {
-        inspectSpriteUI.sprite = InspectedSprite;
-        inspectSpriteUI.enabled = true;
+        spriteContainerUI.GetComponent<Image>().sprite = InspectedSprite;
+        spriteContainerUI.SetActive(true);
     }
 
     public void ExitSpriteInspector()
     {
-        inspectSpriteUI.enabled = false;
+        spriteContainerUI.SetActive(false);
+    }
+
+    public bool IsSpriteInspectorOpen()
+    {
+        return spriteContainerUI.activeSelf;
     }
 }

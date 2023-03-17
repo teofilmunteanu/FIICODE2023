@@ -9,6 +9,14 @@ public class NoisyObject : PauseInteractables
     {
         base.Interact();
 
-        playerUI.ActivateSpriteInspector();
+        if (!playerUI.IsSpriteInspectorOpen())
+        {
+            playerUI.ActivateSpriteInspector();
+        }
+        else
+        {
+            playerUI.ExitSpriteInspector();
+        }
+
     }
 }

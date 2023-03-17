@@ -2,24 +2,20 @@ using Assets.Scripts.Managers;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ModalUI : MonoBehaviour, IDeselectHandler, IPointerEnterHandler, IPointerExitHandler
+public class ModalCloseUI : MonoBehaviour, IDeselectHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField]
-    Animator modalAnimator;
+    protected bool mouseOver = false;
 
-    private bool mouseOver = false;
-
-    private void OnEnable()
+    protected void OnEnable()
     {
         EventSystem.current.SetSelectedGameObject(gameObject);
     }
 
-    public void OnDeselect(BaseEventData eventData)
+    public virtual void OnDeselect(BaseEventData eventData)
     {
         if (!mouseOver)
         {
             PauseManager.Resume();
-            modalAnimator.SetTrigger("Open");
         }
     }
 
