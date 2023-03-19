@@ -1,24 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerUI : MonoBehaviour
+public class InspectedItem : MonoBehaviour
 {
-    [SerializeField]
-    private Text promptTextUI;
-
     [SerializeField]
     private GameObject inspectedContainerUI;
 
-    //[SerializeField]
     private Image inspectedSpriteUI;
 
     public Sprite InspectedSprite { get; set; }
-
-
-    public void UpdatePromptText(string promptMessage)
-    {
-        promptTextUI.text = promptMessage;
-    }
 
     public void ActivateSpriteInspector()
     {
@@ -41,4 +31,5 @@ public class PlayerUI : MonoBehaviour
     {
         return inspectedContainerUI.activeSelf;
     }
+
 }

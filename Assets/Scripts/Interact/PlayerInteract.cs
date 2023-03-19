@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerInteract2 : MonoBehaviour
+public class PlayerInteract : MonoBehaviour
 {
     [SerializeField]
     private Transform cam;
