@@ -1,21 +1,18 @@
-using UnityEngine;
-
 public class NoisyObject : PauseInteractables
 {
-    [SerializeField]
-    private PlayerUI playerUI;
+    public ItemInspectionUI itemInspectionUI;
 
     public override void Interact()
     {
         base.Interact();
 
-        if (!playerUI.IsSpriteInspectorOpen())
+        if (!itemInspectionUI.IsSpriteInspectorOpen())
         {
-            playerUI.ActivateSpriteInspector();
+            itemInspectionUI.ActivateSpriteInspector();
         }
         else
         {
-            playerUI.ExitSpriteInspector();
+            itemInspectionUI.ExitSpriteInspector();
         }
 
     }

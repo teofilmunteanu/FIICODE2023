@@ -14,6 +14,8 @@ public class PlayerInteract2D : MonoBehaviour
 
     private PlayerUI playerUI;
 
+    private ItemInspectionUI itemInspectionUI;
+
     //private Transform orientinator;
     private PlayerMovement2Dmodified playerMovement;
 
@@ -21,6 +23,7 @@ public class PlayerInteract2D : MonoBehaviour
     void Start()
     {
         playerUI = GetComponent<PlayerUI>();
+        itemInspectionUI = GetComponent<ItemInspectionUI>();
         inputManager = GetComponent<InputManager>();
         playerMovement = GetComponent<PlayerMovement2Dmodified>();
     }
@@ -42,18 +45,15 @@ public class PlayerInteract2D : MonoBehaviour
 
         if (hit)
         {
-            Debug.Log("collided");
-
             if (hit.collider.GetComponent<Interactable>() != null)
             {
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
 
                 playerUI.UpdatePromptText(interactable.promptMessage);
 
-                if (interactable.GetComponent<SpriteRenderer>() != null)
-                {
-                    playerUI.InspectedSprite = interactable.GetComponent<SpriteRenderer>().sprite;
-                }
+                //SpriteStorage spriteStorage = interactable.GetComponent<SpriteStorage>();
+                //itemInspectionUI.SetInspectedSprites(spriteStorage.initalSprite, spriteStorage.futureSprite);
+                itemInspectionUI.InteractedObject = interactable;
 
                 if (inputManager.firstPerson.Interact.triggered)
                 {

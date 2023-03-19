@@ -39,10 +39,10 @@ public class PlayerInteract : MonoBehaviour
 
                 playerUI.UpdatePromptText(interactable.promptMessage);
 
-                if (interactable.GetComponent<SpriteRenderer>() != null)
-                {
-                    playerUI.InspectedSprite = interactable.GetComponent<SpriteRenderer>().sprite;
-                }
+                //if (interactable.GetComponent<SpriteRenderer>() != null)
+                //{
+                //    playerUI.InspectedSprite = interactable.GetComponent<SpriteRenderer>().sprite;
+                //}
 
                 if (inputManager.firstPerson.Interact.triggered)
                 {
