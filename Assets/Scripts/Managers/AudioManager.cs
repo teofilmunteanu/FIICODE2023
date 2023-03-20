@@ -36,23 +36,28 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlayInteractableSounds(string soundName)
+    public void PlayInteractableSounds(string activateSoundName, string finishSoundName)
     {
-        Sound s1 = Array.Find(interactablesSounds, sound => sound.name == soundName);
-        int s1Index = Array.IndexOf(interactablesSounds, s1);
+        Sound activateSound = Array.Find(interactablesSounds, sound => sound.name == activateSoundName);
+        //int s1Index = Array.IndexOf(interactablesSounds, s1);
 
-        Sound s2 = buttonsPressSounds[s1Index];
+        Sound finishSound = Array.Find(buttonsPressSounds, sound => sound.name == finishSoundName);
 
 
-        if (s1 != null && s2 != null)
+        if (activateSound != null && finishSound != null)
         {
-            double sound1Duration = (double)s1.audioClip.samples / s1.audioClip.frequency;
+            double sound1Duration = (double)activateSound.audioClip.samples / activateSound.audioClip.frequency;
 
-            interactablesSource.clip = s1.audioClip;
-            buttonsPressSource.clip = s2.audioClip;
+            interactablesSource.clip = activateSound.audioClip;
+            buttonsPressSource.clip = finishSound.audioClip;
 
             interactablesSource.PlayScheduled(AudioSettings.dspTime + 0.1);
             buttonsPressSource.PlayScheduled(AudioSettings.dspTime + 0.1 + sound1Duration);
         }
+    }
+
+    public bool IsInteractableSoundPlaying()
+    {
+        return interactablesSource.isPlaying || buttonsPressSource.isPlaying;
     }
 }

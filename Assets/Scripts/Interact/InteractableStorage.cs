@@ -1,10 +1,12 @@
 using UnityEngine;
 
-public class SpriteStorage : MonoBehaviour
+public class InteractableStorage : MonoBehaviour
 {
     public Sprite initalSprite;
-
     public Sprite futureSprite;
+
+    public string activateSoundName;
+    public string finishSoundName;
 
     public void SwitchSprites()
     {

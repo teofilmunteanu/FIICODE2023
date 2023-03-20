@@ -6,11 +6,10 @@ public class ItemInspectionUI : MonoBehaviour
     [SerializeField]
     private GameObject inspectedContainerUI;
 
-
     public Interactable InteractedObject { get; set; }
 
-
     private Image inspectedSpriteUI;
+    private InteractableStorage interactableStorage;
 
     //private Sprite InitialSprite;
 
@@ -28,10 +27,9 @@ public class ItemInspectionUI : MonoBehaviour
         inspectedContainerUI.SetActive(true);
 
         inspectedSpriteUI = inspectedContainerUI.transform.GetChild(0).gameObject.GetComponent<Image>();
+        interactableStorage = InteractedObject.GetComponent<InteractableStorage>();
 
-
-        SpriteStorage spriteStorage = InteractedObject.GetComponent<SpriteStorage>();
-        inspectedSpriteUI.sprite = spriteStorage.initalSprite;
+        inspectedSpriteUI.sprite = interactableStorage.initalSprite;
         //inspectedSpriteUI.GetComponent<Image>().sprite = InspectedSprite;
 
         //inspectedContainerUI = inspectedSpriteUI.transform.parent.gameObject;
@@ -40,15 +38,14 @@ public class ItemInspectionUI : MonoBehaviour
 
     public void InteractWithSprite()
     {
-        SpriteStorage spriteStorage = InteractedObject.GetComponent<SpriteStorage>();
+        if (!AudioManager.Instance.IsInteractableSoundPlaying())
+        {
+            inspectedSpriteUI.sprite = interactableStorage.futureSprite;
+            InteractedObject.GetComponent<SpriteRenderer>().sprite = interactableStorage.futureSprite;
+            interactableStorage.SwitchSprites();
 
-        inspectedSpriteUI.sprite = spriteStorage.futureSprite;
-        InteractedObject.GetComponent<SpriteRenderer>().sprite = spriteStorage.futureSprite;
-
-        spriteStorage.SwitchSprites();
-
-        //Only switch sprites if the sfx sound isn't playing
-        //Eventually play sound from here??? (but then I'd need a field for the song name)
+            AudioManager.Instance.PlayInteractableSounds(interactableStorage.activateSoundName, interactableStorage.finishSoundName);
+        }
     }
 
     public void ExitSpriteInspector()
