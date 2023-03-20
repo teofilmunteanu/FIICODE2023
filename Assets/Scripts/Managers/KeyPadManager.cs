@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.Events;
 public class KeyPadManager : MonoBehaviour
 {
@@ -25,7 +23,7 @@ public class KeyPadManager : MonoBehaviour
         keyInputField.characterLimit = characterLimit;
     }
 
-    public void keyButton(string key)
+    public void PressButtonWithKey(int key)
     {
         if (inputCount < keyInputField.characterLimit)
         {
@@ -36,6 +34,8 @@ public class KeyPadManager : MonoBehaviour
 
             keyInputField.text += key;
             inputCount++;
+
+            AudioManager.Instance.PlayButtonSound(key);
         }
     }
 

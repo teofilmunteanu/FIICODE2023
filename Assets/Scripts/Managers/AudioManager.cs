@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -21,7 +20,7 @@ public class AudioManager : MonoBehaviour
     }
     #endregion
 
-    public Sound[] interactablesSounds, buttonsPressSounds; //sfxSounds, musicSounds ...
+    public Sound[] /*interactablesSounds,*/ buttonsPressSounds; //sfxSounds, musicSounds ...
     public AudioSource interactablesSource, buttonsPressSource;
 
     // public void PlayButtonSound(string soundName)
@@ -35,16 +34,15 @@ public class AudioManager : MonoBehaviour
     //         buttonsPressSource.Play();
     //     }
     // }
-    public void PlayButtonSound(AudioClip sound)
+    public void PlayButtonSound(int key)
     {
         //Sound s = Array.Find(buttonsPressSounds, sound => sound.name == soundName);
 
-        // if (sound != null)
-        // {
-        buttonsPressSource.clip = sound;
+        Sound sound = buttonsPressSounds[key];
+
+        buttonsPressSource.clip = sound.audioClip;
 
         buttonsPressSource.Play();
-        //}
     }
 
     // public void PlayInteractableSounds(string activateSoundName, string finishSoundName)
