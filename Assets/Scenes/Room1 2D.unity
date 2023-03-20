@@ -1653,10 +1653,10 @@ MonoBehaviour:
       - m_Target: {fileID: 802903896}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: PlayButtonSound
-        m_Mode: 5
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 8300000, guid: a7b49e440435b6d45a5ff58272b7f2f8, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: buttonPress1
@@ -12399,8 +12399,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initalSprite: {fileID: 21300000, guid: f035ecccdf18cab449242a778745fc1c, type: 3}
   futureSprite: {fileID: 21300000, guid: f09f198b74decc04397b4cae128b1f9f, type: 3}
-  activateSoundName: interactable1
-  finishSoundName: buttonPress1
+  activateSound: {fileID: 8300000, guid: cc74463834ebbd2478e86ca5bf8319c9, type: 3}
+  finishSound: {fileID: 8300000, guid: a7b49e440435b6d45a5ff58272b7f2f8, type: 3}
 --- !u!1 &1456524494
 GameObject:
   m_ObjectHideFlags: 0

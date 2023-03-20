@@ -44,7 +44,8 @@ public class ItemInspectionUI : MonoBehaviour
             InteractedObject.GetComponent<SpriteRenderer>().sprite = interactableStorage.futureSprite;
             interactableStorage.SwitchSprites();
 
-            AudioManager.Instance.PlayInteractableSounds(interactableStorage.activateSoundName, interactableStorage.finishSoundName);
+            //AudioManager.Instance.PlayInteractableSounds(interactableStorage.activateSoundName, interactableStorage.finishSoundName);
+            AudioManager.Instance.PlayInteractableSounds(interactableStorage.activateSound, interactableStorage.finishSound);
         }
     }
 
