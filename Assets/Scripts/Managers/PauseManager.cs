@@ -14,6 +14,8 @@ namespace Assets.Scripts.Managers
             Cursor.visible = false;
             Time.timeScale = 1;
             IsGamePaused = false;
+            IsPauseMenuOpen = false;
+            IsModalOpen = false;
         }
 
         public static void Pause()
