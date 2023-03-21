@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class AudioManager : MonoBehaviour
         else
         {
             Instance = this;
+
+            interactablesSource.outputAudioMixerGroup = mainAudioMixer;
+            buttonsPressSource.outputAudioMixerGroup = mainAudioMixer;
         }
 
         DontDestroyOnLoad(gameObject);
@@ -22,6 +26,9 @@ public class AudioManager : MonoBehaviour
 
     public Sound[] /*interactablesSounds,*/ buttonsPressSounds; //sfxSounds, musicSounds ...
     public AudioSource interactablesSource, buttonsPressSource;
+
+    [SerializeField]
+    AudioMixerGroup mainAudioMixer;
 
     // public void PlayButtonSound(string soundName)
     // {
