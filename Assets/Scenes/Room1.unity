@@ -4233,6 +4233,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: f7ade48e381286440ba4f6e420f6ad79, type: 3}
   interactablesSource: {fileID: 440149038}
   buttonsPressSource: {fileID: 1172321599}
+  mainAudioMixer: {fileID: 24300002, guid: 2631d36b11f30f64b8914a461400200c, type: 2}
 --- !u!4 &802903897
 Transform:
   m_ObjectHideFlags: 0
