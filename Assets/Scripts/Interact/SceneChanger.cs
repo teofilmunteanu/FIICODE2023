@@ -23,6 +23,15 @@ public class SceneChanger : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        Debug.Log("collision!");
+        if (collider.gameObject.name == "Player")
+        {
+            ChangeScene();
+        }
+    }
+
     public void ChangeScene()
     {
 

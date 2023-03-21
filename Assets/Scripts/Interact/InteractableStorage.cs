@@ -8,7 +8,9 @@ public class InteractableStorage : MonoBehaviour
     //public string activateSoundName; 
     public AudioClip activateSound;
     //public string finishSoundName;
-    public AudioClip finishSound;
+    public int keypadButton;
+
+    public int orderDigit;
 
     public void SwitchSprites()
     {

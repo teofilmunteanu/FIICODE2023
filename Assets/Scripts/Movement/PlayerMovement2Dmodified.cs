@@ -31,7 +31,7 @@ public class PlayerMovement2Dmodified : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
 
         //keeps player from rotating on x/z in 2d(unnecessary if using 2d game objects)
-        rb.transform.transform.localRotation = Quaternion.identity;
+        //rb.transform.transform.localRotation = Quaternion.identity;
 
         //rotation shouldn't be updated when paused
         if (!PauseManager.GameIsPaused)

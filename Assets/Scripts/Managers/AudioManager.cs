@@ -64,13 +64,13 @@ public class AudioManager : MonoBehaviour
     //         buttonsPressSource.PlayScheduled(AudioSettings.dspTime + 0.1 + sound1Duration);
     //     }
     // }
-    public void PlayInteractableSounds(AudioClip activateSound, AudioClip finishSound)
+    public void PlayInteractableSounds(AudioClip activateSound, int keypadButton)
     {
         //Sound activateSound = Array.Find(interactablesSounds, sound => sound.name == activateSoundName);
         //int s1Index = Array.IndexOf(interactablesSounds, s1);
 
         //Sound finishSound = Array.Find(buttonsPressSounds, sound => sound.name == finishSoundName);
-
+        AudioClip finishSound = buttonsPressSounds[keypadButton].audioClip;
 
         if (activateSound != null && finishSound != null)
         {

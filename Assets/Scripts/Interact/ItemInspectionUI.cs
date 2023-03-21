@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,8 @@ public class ItemInspectionUI : MonoBehaviour
 
     private Image inspectedSpriteUI;
     private InteractableStorage interactableStorage;
+
+    private TMP_Text pinDigitLabel;
 
     //private Sprite InitialSprite;
 
@@ -25,11 +28,18 @@ public class ItemInspectionUI : MonoBehaviour
     public void ActivateSpriteInspector()
     {
         inspectedContainerUI.SetActive(true);
-
-        inspectedSpriteUI = inspectedContainerUI.transform.GetChild(0).gameObject.GetComponent<Image>();
         interactableStorage = InteractedObject.GetComponent<InteractableStorage>();
 
+        inspectedSpriteUI = inspectedContainerUI.transform.GetChild(0).GetComponent<Image>();
         inspectedSpriteUI.sprite = interactableStorage.initalSprite;
+
+
+        pinDigitLabel = inspectedContainerUI.transform.GetComponentInChildren<TMP_Text>();
+        pinDigitLabel.text = interactableStorage.orderDigit + "";
+
+        //interactableStorage.pinDigit;
+
+
         //inspectedSpriteUI.GetComponent<Image>().sprite = InspectedSprite;
 
         //inspectedContainerUI = inspectedSpriteUI.transform.parent.gameObject;
@@ -45,7 +55,7 @@ public class ItemInspectionUI : MonoBehaviour
             interactableStorage.SwitchSprites();
 
             //AudioManager.Instance.PlayInteractableSounds(interactableStorage.activateSoundName, interactableStorage.finishSoundName);
-            AudioManager.Instance.PlayInteractableSounds(interactableStorage.activateSound, interactableStorage.finishSound);
+            AudioManager.Instance.PlayInteractableSounds(interactableStorage.activateSound, interactableStorage.keypadButton);
         }
     }
 
