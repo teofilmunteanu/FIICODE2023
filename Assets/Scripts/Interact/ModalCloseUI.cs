@@ -19,10 +19,9 @@ public class ModalCloseUI : MonoBehaviour, IDeselectHandler, IPointerEnterHandle
         }
 
         //so it can trigger OnDeselect after just pressing on Resume
-        if (!PauseManager.IsPauseMenuOpen)
-        {
-            EventSystem.current.SetSelectedGameObject(gameObject);
-        }
+
+        EventSystem.current.SetSelectedGameObject(gameObject);
+
     }
 
     public void OnPointerEnter(PointerEventData eventData)
