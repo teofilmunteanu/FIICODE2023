@@ -1,10 +1,10 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
     [SerializeField]
-    private Text promptTextUI;
+    private TMP_Text promptTextUI;
 
 
     public void UpdatePromptText(string promptMessage)
