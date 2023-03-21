@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Managers;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Assets.Scripts.Interact
@@ -12,7 +13,7 @@ namespace Assets.Scripts.Interact
         {
             base.OnDeselect(eventData);
 
-            if (!mouseOver)
+            if (!mouseOver && !PauseManager.IsPauseMenuOpen)
             {
                 ContainerUI.SetActive(false);
             }

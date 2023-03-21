@@ -1,3 +1,4 @@
+using Assets.Scripts.Managers;
 using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
@@ -6,7 +7,10 @@ public abstract class Interactable : MonoBehaviour
     public void BaseInteract()
     {
         Debug.Log("Interact with " + gameObject.name);
-        Interact();
+        if (!PauseManager.IsPauseMenuOpen)
+        {
+            Interact();
+        }
     }
 
     public abstract void Interact();

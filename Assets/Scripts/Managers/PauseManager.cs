@@ -4,14 +4,16 @@ namespace Assets.Scripts.Managers
 {
     public static class PauseManager
     {
-        public static bool GameIsPaused;
+        public static bool IsGamePaused { get; set; }
+        public static bool IsModalOpen { get; set; }
+        public static bool IsPauseMenuOpen { get; set; }
 
         public static void Resume()
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             Time.timeScale = 1;
-            GameIsPaused = false;
+            IsGamePaused = false;
         }
 
         public static void Pause()
@@ -19,7 +21,7 @@ namespace Assets.Scripts.Managers
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             Time.timeScale = 0;
-            GameIsPaused = true;
+            IsGamePaused = true;
         }
     }
 }

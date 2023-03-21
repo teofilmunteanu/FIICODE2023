@@ -13,7 +13,7 @@ public class ModalCloseUI : MonoBehaviour, IDeselectHandler, IPointerEnterHandle
 
     public virtual void OnDeselect(BaseEventData eventData)
     {
-        if (!mouseOver)
+        if (!mouseOver && !PauseManager.IsPauseMenuOpen)
         {
             PauseManager.Resume();
         }

@@ -20,27 +20,45 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (PauseManager.GameIsPaused)
+            //if (PauseManager.IsGamePaused)
+            //{
+            //    HideMenu();
+            //}
+            //else if (!PauseManager.IsGamePaused || PauseManager.IsModalOpen)
+            //{
+            //    ShowMenu();
+            //}
+
+
+            if (pauseMenu.activeSelf)
             {
-                Resume();
+                HideMenu();
             }
             else
             {
-                Pause();
+                ShowMenu();
             }
+
         }
     }
 
-    public void Resume()
+    public void HideMenu()
     {
         pauseMenu.SetActive(false);
 
-        PauseManager.Resume();
+        PauseManager.IsPauseMenuOpen = false;
+
+        if (!PauseManager.IsModalOpen)
+        {
+            PauseManager.Resume();
+        }
     }
 
-    public void Pause()
+    public void ShowMenu()
     {
         pauseMenu.SetActive(true);
+
+        PauseManager.IsPauseMenuOpen = true;
 
         principalMenu.SetActive(true);
         optionsMenu.SetActive(false);

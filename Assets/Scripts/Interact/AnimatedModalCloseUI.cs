@@ -19,7 +19,7 @@ namespace Assets.Scripts.Interact
         {
             base.OnDeselect(eventData);
 
-            if (!mouseOver)
+            if (!mouseOver && !PauseManager.IsPauseMenuOpen)
             {
                 modalAnimator.SetTrigger("Open");
             }
