@@ -6,7 +6,31 @@ namespace Assets.Scripts.Managers
     {
         public static bool IsGamePaused { get; set; }
         public static bool IsModalOpen { get; set; }
-        public static bool IsPauseMenuOpen { get; set; }
+        private static bool isPauseMenuOpen;
+        public static bool IsPauseMenuOpen
+        {
+            get
+            {
+                return isPauseMenuOpen;
+            }
+            set
+            {
+                if (isPauseMenuOpen == value)
+                {
+                    return;
+                }
+
+                isPauseMenuOpen = value;
+                if (OnMenuOpenChange != null)
+                {
+                    OnMenuOpenChange(value);
+                }
+            }
+        }
+
+
+        public delegate void OnMenuOpenChangeDelegate(bool newVal);
+        public static event OnMenuOpenChangeDelegate OnMenuOpenChange;
 
         public static void Resume()
         {
