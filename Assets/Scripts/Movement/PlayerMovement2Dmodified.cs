@@ -16,9 +16,14 @@ public class PlayerMovement2Dmodified : MonoBehaviour
     [NonSerialized]
     public Vector2 orientation;
 
+    Animator movementAnimator;
+    int lastVerticalDir;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        movementAnimator = GetComponent<Animator>();
+        lastVerticalDir = 0;
         //zRot = 0;
     }
 
@@ -30,16 +35,31 @@ public class PlayerMovement2Dmodified : MonoBehaviour
 
         movement.y = Input.GetAxisRaw("Vertical");
 
+        if (movement.y > 0)
+        {
+            lastVerticalDir = 1;
+        }
+        else if (movement.y < 0)
+        {
+            lastVerticalDir = -1;
+        }
+
         //keeps player from rotating on x/z in 2d(unnecessary if using 2d game objects)
         //rb.transform.transform.localRotation = Quaternion.identity;
-
         //rotation shouldn't be updated when paused
+
         if (!PauseManager.IsGamePaused)
         {
             if ((movement.x != 0 || movement.y != 0) && Mathf.Abs(movement.x) != Mathf.Abs(movement.y))
             {
                 orientation = new Vector2(movement.x, movement.y);
             }
+
+            movementAnimator.SetFloat("Horizontal", movement.x);
+            movementAnimator.SetFloat("Vertical", movement.y);
+            movementAnimator.SetFloat("Speed", movement.sqrMagnitude);
+
+            movementAnimator.SetFloat("LastVertical", lastVerticalDir);
             //if (movement.x < 0)
             //{
             //    orientation = Vector2.left;
