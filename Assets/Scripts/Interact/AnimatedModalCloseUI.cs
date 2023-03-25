@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Managers;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Assets.Scripts.Interact
@@ -8,11 +9,17 @@ namespace Assets.Scripts.Interact
         [SerializeField]
         Animator modalAnimator;
 
+        public void CloseModal()
+        {
+            modalAnimator.SetTrigger("Open");
+            PauseManager.Resume();
+        }
+
         public override void OnDeselect(BaseEventData eventData)
         {
             base.OnDeselect(eventData);
 
-            if (!mouseOver)
+            if (!mouseOver && !PauseManager.IsPauseMenuOpen)
             {
                 modalAnimator.SetTrigger("Open");
             }

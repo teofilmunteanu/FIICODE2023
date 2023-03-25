@@ -41,7 +41,7 @@ public class OptionsMenu : MonoBehaviour
         List<string> resOptions = new List<string>();
 
         int currentResolution = 0;
-        for (int i = resolutions.Length - 1; i >= 0; i--)
+        for (int i = 0; i < resolutions.Length; i++)
         {
             string option = resolutions[i].width + "x" + resolutions[i].height;
             resOptions.Add(option);

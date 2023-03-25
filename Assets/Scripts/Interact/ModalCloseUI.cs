@@ -6,6 +6,11 @@ public class ModalCloseUI : MonoBehaviour, IDeselectHandler, IPointerEnterHandle
 {
     protected bool mouseOver = false;
 
+    private void Start()
+    {
+        PauseManager.OnMenuOpenChange += OnMenuOpenChangeHandler;
+    }
+
     protected void OnEnable()
     {
         EventSystem.current.SetSelectedGameObject(gameObject);
@@ -13,7 +18,7 @@ public class ModalCloseUI : MonoBehaviour, IDeselectHandler, IPointerEnterHandle
 
     public virtual void OnDeselect(BaseEventData eventData)
     {
-        if (!mouseOver)
+        if (!mouseOver && !PauseManager.IsPauseMenuOpen)
         {
             PauseManager.Resume();
         }
@@ -28,6 +33,11 @@ public class ModalCloseUI : MonoBehaviour, IDeselectHandler, IPointerEnterHandle
     public void OnPointerExit(PointerEventData eventData)
     {
         mouseOver = false;
+        EventSystem.current.SetSelectedGameObject(gameObject);
+    }
+
+    private void OnMenuOpenChangeHandler(bool newVal)
+    {
         EventSystem.current.SetSelectedGameObject(gameObject);
     }
 }

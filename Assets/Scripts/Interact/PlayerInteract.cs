@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerInteract2 : MonoBehaviour
+public class PlayerInteract : MonoBehaviour
 {
     [SerializeField]
     private Transform cam;
@@ -39,10 +39,10 @@ public class PlayerInteract2 : MonoBehaviour
 
                 playerUI.UpdatePromptText(interactable.promptMessage);
 
-                if (interactable.GetComponent<SpriteRenderer>() != null)
-                {
-                    playerUI.InspectedSprite = interactable.GetComponent<SpriteRenderer>().sprite;
-                }
+                //if (interactable.GetComponent<SpriteRenderer>() != null)
+                //{
+                //    playerUI.InspectedSprite = interactable.GetComponent<SpriteRenderer>().sprite;
+                //}
 
                 if (inputManager.firstPerson.Interact.triggered)
                 {
