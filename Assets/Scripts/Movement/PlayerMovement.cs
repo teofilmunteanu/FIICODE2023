@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
 
     public Transform orientation;
 
+    public Transform handsor;
+
     float horizontalInput;
     float verticalInput;
 

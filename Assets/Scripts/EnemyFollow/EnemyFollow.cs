@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 public class EnemyFollow : MonoBehaviour
 {
-
-    private int snakeBodySize;
     public Transform Player;
     [SerializeField]
     float MoveSpeed = 5f;
+    Vector2 pos;
     private void Start()
     {
     }
@@ -18,5 +17,7 @@ public class EnemyFollow : MonoBehaviour
 
     public void Move()
     { 
+        transform.LookAt(Player);
+        transform.position += transform.forward * MoveSpeed * Time.deltaTime;
     }
 }
