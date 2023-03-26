@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PlayerMovement2Dmodified : MonoBehaviour
 {
+
     public float moveSpeed = 5f;
 
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
 
-    Vector2 movement;
+    public Vector2 movement;
 
 
     //public Transform orintinatorTransform;

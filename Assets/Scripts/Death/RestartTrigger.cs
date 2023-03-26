@@ -11,11 +11,9 @@ public class RestartTrigger : MonoBehaviour
         scene = SceneManager.GetActiveScene();
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(other.gameObject.tag == "Player")
-        {
-            Application.LoadLevel(scene.name);
-        }
+        Application.LoadLevel(scene.name);
     }
 }

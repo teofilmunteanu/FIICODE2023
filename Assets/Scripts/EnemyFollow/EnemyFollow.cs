@@ -1,23 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
+using UnityEngine.Tilemaps;
+
 public class EnemyFollow : MonoBehaviour
 {
-    public Transform Player;
-    [SerializeField]
-    float MoveSpeed = 5f;
-    Vector2 pos;
-    private void Start()
+    [SerializeField] PlayerMovement2Dmodified MovementScript;
+   // public Transform Player;
+    List<Vector2> position;
+    void Start()
     {
-    }
-    private void Update()
-    {
-        Move();
+        position = new List<Vector2>();  
     }
 
-    public void Move()
-    { 
-        transform.LookAt(Player);
-        transform.position += transform.forward * MoveSpeed * Time.deltaTime;
+    private void Update()
+    {
+        if(MovementScript.movement != Vector2.zero)
+            position.Add(MovementScript.rb.position);
+        if(position.Count > 50)
+            InvokeRepeating("Following", 0.0f, 1.0f);
+        
+    }
+
+    void Following()
+    {
+        if (position.Count > 0)
+        {
+            transform.position = position[0];
+            position.RemoveAt(0);
+            Debug.Log(position[0].x + " " + position[0].y);
+        }
+
     }
 }
+
+
