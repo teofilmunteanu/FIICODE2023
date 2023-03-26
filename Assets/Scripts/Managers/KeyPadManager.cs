@@ -23,7 +23,6 @@ public class KeyPadManager : MonoBehaviour
     //[SerializeField]
     //private GameObject LockObj;
 
-    private int inputCount;
     private readonly string wrongPrompt = "WRONG";
     private readonly string correctPrompt = "CORRECT";
 
@@ -40,7 +39,7 @@ public class KeyPadManager : MonoBehaviour
         //the correct pass should also be randomized(it's given in unity rn)
     }
 
-    public string getObjectsOrderString()
+    private string getObjectsOrderString()
     {
         char[] chars = new char[characterLimit];
 
@@ -61,45 +60,56 @@ public class KeyPadManager : MonoBehaviour
 
     public void PressButtonWithKey(int key)
     {
-        if (inputCount < keyInputField.characterLimit)
+        if (keyInputField.text == wrongPrompt)
         {
-            if (keyInputField.text == wrongPrompt)
-            {
-                resetInputField();
-            }
+            resetInputField();
+        }
 
+        if (keyInputField.text.Length < keyInputField.characterLimit)
+        {
             keyInputField.text += key;
-            inputCount++;
 
             AudioManager.Instance.PlayButtonSound(key);
         }
     }
 
-    public void enterButton()
+    public void EnterButton()
     {
-        if (passCode == keyInputField.text)
+        if (keyInputField.text != correctPrompt)
         {
-            unlockEvent.Invoke();
+            if (passCode == keyInputField.text)
+            {
+                unlockEvent.Invoke();
 
-            //LockObj.GetComponent<Collider2D>().enabled = false;
-            keyInputField.text = correctPrompt;
-        }
-        else
-        {
-            keyInputField.text = wrongPrompt;
+                //LockObj.GetComponent<Collider2D>().enabled = false;
+                keyInputField.text = correctPrompt;
+            }
+            else
+            {
+                keyInputField.text = wrongPrompt;
 
+            }
         }
     }
 
 
-    public void cancelButton()
+    public void BackspaceButton()
     {
-        resetInputField();
+        if (keyInputField.text != correctPrompt)
+        {
+            if (keyInputField.text != wrongPrompt)
+            {
+                keyInputField.text = keyInputField.text.Remove(keyInputField.text.Length - 1);
+            }
+            else
+            {
+                resetInputField();
+            }
+        }
     }
 
     private void resetInputField()
     {
         keyInputField.text = string.Empty;
-        inputCount = 0;
     }
 }

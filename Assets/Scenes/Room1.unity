@@ -912,7 +912,7 @@ RectTransform:
   m_Children:
   - {fileID: 1955024731}
   m_Father: {fileID: 1055352650}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -8814,8 +8814,8 @@ RectTransform:
   - {fileID: 2131482661}
   - {fileID: 1136563529}
   - {fileID: 603195317}
-  - {fileID: 170197663}
   - {fileID: 1339338700}
+  - {fileID: 170197663}
   - {fileID: 1456524495}
   m_Father: {fileID: 1284406733}
   m_RootOrder: 0
@@ -10591,7 +10591,7 @@ RectTransform:
   m_Children:
   - {fileID: 531805776}
   m_Father: {fileID: 1055352650}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -10644,7 +10644,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 700984314}
         m_TargetAssemblyTypeName: KeyPadManager, Assembly-CSharp
-        m_MethodName: cancelButton
+        m_MethodName: BackspaceButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11100,7 +11100,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 700984314}
         m_TargetAssemblyTypeName: KeyPadManager, Assembly-CSharp
-        m_MethodName: enterButton
+        m_MethodName: EnterButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13227,7 +13227,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ok
+  m_text: OK
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13254,13 +13254,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15
-  m_fontSizeBase: 15
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
   m_fontSizeMax: 0
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
