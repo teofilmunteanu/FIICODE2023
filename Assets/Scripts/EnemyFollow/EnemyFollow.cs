@@ -1,15 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
-using UnityEngine.Tilemaps;
 
 public class EnemyFollow : MonoBehaviour
 {
     [SerializeField] PlayerMovement2Dmodified MovementScript;
-   // public Transform Player;
+    // public Transform Player;
     List<Vector2> position;
     bool executa = false;
+
     void Start()
     {
         position = new List<Vector2>();
@@ -17,10 +15,20 @@ public class EnemyFollow : MonoBehaviour
 
     private void Update()
     {
-        if(MovementScript.movement != Vector2.zero && position.Count < 51)
+        if (MovementScript.movement != Vector2.zero)
+        {
             position.Add(MovementScript.rb.position);
-        if (position.Count > 50)
-            InvokeRepeating("Following", 0.0f, 1.0f);
+        }
+
+        if (position.Count > 500)
+        {
+            executa = true;
+        }
+
+        if (executa)
+        {
+            InvokeRepeating("Following", 0.0f, 5.0f);
+        }
     }
 
     void Following()
@@ -29,8 +37,7 @@ public class EnemyFollow : MonoBehaviour
         {
             transform.position = position[0];
             position.RemoveAt(0);
-            if (MovementScript.movement != Vector2.zero)
-                position.Add(MovementScript.rb.position);
+
             Debug.Log(position[0].x + " " + position[0].y);
         }
 
