@@ -20,14 +20,10 @@ public class EnemyFollow : MonoBehaviour
             position.Add(MovementScript.rb.position);
         }
 
-        if (position.Count > 500)
+        if (position.Count > 500 && !executa)
         {
             executa = true;
-        }
-
-        if (executa)
-        {
-            InvokeRepeating("Following", 0.0f, 5.0f);
+            InvokeRepeating("Following", 0.0f, 0.001f);
         }
     }
 
@@ -37,8 +33,6 @@ public class EnemyFollow : MonoBehaviour
         {
             transform.position = position[0];
             position.RemoveAt(0);
-
-            Debug.Log(position[0].x + " " + position[0].y);
         }
 
     }
