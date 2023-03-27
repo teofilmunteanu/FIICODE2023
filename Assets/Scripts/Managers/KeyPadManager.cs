@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -6,19 +7,25 @@ using UnityEngine.Events;
 public class KeyPadManager : MonoBehaviour
 {
     [SerializeField]
-    private string passCode;
+    private char[] passCode;
+
+    [SerializeField]
+    private char[] leversOrder;
 
     [SerializeField]
     private int characterLimit = 5;
 
     [SerializeField]
-    TMP_InputField keyInputField;
+    private TMP_InputField keyInputField;
 
     [SerializeField]
-    TMP_Text objectsOrder;
+    private TMP_Text objectsOrder;
 
     [SerializeField]
     private UnityEvent unlockEvent;
+
+    [SerializeField]
+    private InteractableStorage[] interactableStorages;
 
     //[SerializeField]
     //private GameObject LockObj;
@@ -32,14 +39,41 @@ public class KeyPadManager : MonoBehaviour
 
         keyInputField.characterLimit = characterLimit;
 
-        objectsOrder.text = "12345";
-        //only for testing, should get random nr, but then, should also set the levers sounds
-        //getObjectsOrderString();
+        passCode = getRandomPIN();
 
-        //the correct pass should also be randomized(it's given in unity rn)
+        leversOrder = getRandomLeverOrder();
+        objectsOrder.text = new string(leversOrder);
+
+        setLeversData();
     }
 
-    private string getObjectsOrderString()
+    private void setLeversData()
+    {
+        Stack<int> digitsNotInPass = new Stack<int>();
+        for (int i = 0; i <= 9; i++)
+        {
+            char digitChar = (char)('0' + i);
+            if (!passCode.Contains(digitChar))
+            {
+                digitsNotInPass.Push(i);
+            }
+        }
+
+        for (int i = 0; i < characterLimit; i++)
+        {
+            interactableStorages[leversOrder[i] - '0' - 1].keypadButton = passCode[i] - '0';
+        }
+
+        for (int i = 0; i < interactableStorages.Length; i++)
+        {
+            if (!leversOrder.Contains((char)('0' + i + 1)))
+            {
+                interactableStorages[i].keypadButton = digitsNotInPass.Pop();
+            }
+        }
+    }
+
+    private char[] getRandomNrCharArray(int rangeBegin, int rangeEnd)
     {
         char[] chars = new char[characterLimit];
 
@@ -48,15 +82,27 @@ public class KeyPadManager : MonoBehaviour
             char nrToAdd = ' ';
             do
             {
-                nrToAdd = (char)('0' + Random.Range(0, 9));
+                nrToAdd = (char)('0' + Random.Range(rangeBegin, rangeEnd));
 
             } while (chars.Contains(nrToAdd));
 
             chars[i] = nrToAdd;
         }
 
-        return new string(chars);
+        return chars;
     }
+
+    private char[] getRandomPIN()
+    {
+        return getRandomNrCharArray(0, 9);
+    }
+
+    private char[] getRandomLeverOrder()
+    {
+        return getRandomNrCharArray(1, interactableStorages.Count());
+    }
+
+
 
     public void PressButtonWithKey(int key)
     {
@@ -77,7 +123,7 @@ public class KeyPadManager : MonoBehaviour
     {
         if (keyInputField.text != correctPrompt)
         {
-            if (passCode == keyInputField.text)
+            if (new string(passCode) == keyInputField.text)
             {
                 unlockEvent.Invoke();
 
@@ -99,7 +145,10 @@ public class KeyPadManager : MonoBehaviour
         {
             if (keyInputField.text != wrongPrompt)
             {
-                keyInputField.text = keyInputField.text.Remove(keyInputField.text.Length - 1);
+                if (keyInputField.text != string.Empty)
+                {
+                    keyInputField.text = keyInputField.text.Remove(keyInputField.text.Length - 1);
+                }
             }
             else
             {
