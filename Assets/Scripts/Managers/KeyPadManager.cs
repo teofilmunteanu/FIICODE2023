@@ -7,12 +7,6 @@ using UnityEngine.Events;
 public class KeyPadManager : MonoBehaviour
 {
     [SerializeField]
-    private char[] passCode;
-
-    [SerializeField]
-    private char[] leversOrder;
-
-    [SerializeField]
     private int characterLimit = 5;
 
     [SerializeField]
@@ -27,16 +21,15 @@ public class KeyPadManager : MonoBehaviour
     [SerializeField]
     private InteractableStorage[] interactableStorages;
 
-    //[SerializeField]
-    //private GameObject LockObj;
+    private char[] passCode;
+
+    private char[] leversOrder;
 
     private readonly string wrongPrompt = "WRONG";
     private readonly string correctPrompt = "CORRECT";
 
     private void Start()
     {
-        //LockObj.GetComponent<Collider2D>().enabled = true;
-
         keyInputField.characterLimit = characterLimit;
 
         passCode = getRandomPIN();
@@ -127,7 +120,6 @@ public class KeyPadManager : MonoBehaviour
             {
                 unlockEvent.Invoke();
 
-                //LockObj.GetComponent<Collider2D>().enabled = false;
                 keyInputField.text = correctPrompt;
             }
             else
@@ -137,7 +129,6 @@ public class KeyPadManager : MonoBehaviour
             }
         }
     }
-
 
     public void BackspaceButton()
     {
