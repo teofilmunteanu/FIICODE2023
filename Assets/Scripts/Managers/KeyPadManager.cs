@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -6,41 +7,66 @@ using UnityEngine.Events;
 public class KeyPadManager : MonoBehaviour
 {
     [SerializeField]
-    private string passCode;
-
-    [SerializeField]
     private int characterLimit = 5;
 
     [SerializeField]
-    TMP_InputField keyInputField;
+    private TMP_InputField keyInputField;
 
     [SerializeField]
-    TMP_Text objectsOrder;
+    private TMP_Text objectsOrder;
 
     [SerializeField]
     private UnityEvent unlockEvent;
 
-    //[SerializeField]
-    //private GameObject LockObj;
+    [SerializeField]
+    private InteractableStorage[] interactableStorages;
 
-    private int inputCount;
+    private char[] passCode;
+
+    private char[] leversOrder;
+
     private readonly string wrongPrompt = "WRONG";
     private readonly string correctPrompt = "CORRECT";
 
     private void Start()
     {
-        //LockObj.GetComponent<Collider2D>().enabled = true;
-
         keyInputField.characterLimit = characterLimit;
 
-        objectsOrder.text = "12345";
-        //only for testing, should get random nr, but then, should also set the levers sounds
-        //getObjectsOrderString();
+        passCode = getRandomPIN();
 
-        //the correct pass should also be randomized(it's given in unity rn)
+        leversOrder = getRandomLeverOrder();
+        objectsOrder.text = new string(leversOrder);
+
+        setLeversData();
     }
 
-    public string getObjectsOrderString()
+    private void setLeversData()
+    {
+        Stack<int> digitsNotInPass = new Stack<int>();
+        for (int i = 0; i <= 9; i++)
+        {
+            char digitChar = (char)('0' + i);
+            if (!passCode.Contains(digitChar))
+            {
+                digitsNotInPass.Push(i);
+            }
+        }
+
+        for (int i = 0; i < characterLimit; i++)
+        {
+            interactableStorages[leversOrder[i] - '0' - 1].keypadButton = passCode[i] - '0';
+        }
+
+        for (int i = 0; i < interactableStorages.Length; i++)
+        {
+            if (!leversOrder.Contains((char)('0' + i + 1)))
+            {
+                interactableStorages[i].keypadButton = digitsNotInPass.Pop();
+            }
+        }
+    }
+
+    private char[] getRandomNrCharArray(int rangeBegin, int rangeEnd)
     {
         char[] chars = new char[characterLimit];
 
@@ -49,57 +75,81 @@ public class KeyPadManager : MonoBehaviour
             char nrToAdd = ' ';
             do
             {
-                nrToAdd = (char)('0' + Random.Range(0, 9));
+                nrToAdd = (char)('0' + Random.Range(rangeBegin, rangeEnd));
 
             } while (chars.Contains(nrToAdd));
 
             chars[i] = nrToAdd;
         }
 
-        return new string(chars);
+        return chars;
     }
+
+    private char[] getRandomPIN()
+    {
+        return getRandomNrCharArray(0, 9);
+    }
+
+    private char[] getRandomLeverOrder()
+    {
+        return getRandomNrCharArray(1, interactableStorages.Count());
+    }
+
+
 
     public void PressButtonWithKey(int key)
     {
-        if (inputCount < keyInputField.characterLimit)
+        if (keyInputField.text == wrongPrompt)
         {
-            if (keyInputField.text == wrongPrompt)
-            {
-                resetInputField();
-            }
+            resetInputField();
+        }
 
+        if (keyInputField.text.Length < keyInputField.characterLimit)
+        {
             keyInputField.text += key;
-            inputCount++;
 
             AudioManager.Instance.PlayButtonSound(key);
         }
     }
 
-    public void enterButton()
+    public void EnterButton()
     {
-        if (passCode == keyInputField.text)
+        if (keyInputField.text != correctPrompt)
         {
-            unlockEvent.Invoke();
+            if (new string(passCode) == keyInputField.text)
+            {
+                unlockEvent.Invoke();
 
-            //LockObj.GetComponent<Collider2D>().enabled = false;
-            keyInputField.text = correctPrompt;
-        }
-        else
-        {
-            keyInputField.text = wrongPrompt;
+                keyInputField.text = correctPrompt;
+            }
+            else
+            {
+                keyInputField.text = wrongPrompt;
 
+            }
         }
     }
 
-
-    public void cancelButton()
+    public void BackspaceButton()
     {
-        resetInputField();
+        if (keyInputField.text != correctPrompt)
+        {
+            if (keyInputField.text != wrongPrompt)
+            {
+                if (keyInputField.text != string.Empty)
+                {
+                    keyInputField.text = keyInputField.text.Remove(keyInputField.text.Length - 1);
+                }
+            }
+            else
+            {
+                resetInputField();
+            }
+        }
     }
 
     private void resetInputField()
     {
         keyInputField.text = string.Empty;
-        inputCount = 0;
     }
 }

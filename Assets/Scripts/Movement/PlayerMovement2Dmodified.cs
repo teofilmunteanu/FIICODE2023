@@ -45,6 +45,8 @@ public class PlayerMovement2Dmodified : MonoBehaviour
             lastVerticalDir = -1;
         }
 
+        movement = movement.normalized;
+
         //keeps player from rotating on x/z in 2d(unnecessary if using 2d game objects)
         //rb.transform.transform.localRotation = Quaternion.identity;
         //rotation shouldn't be updated when paused
