@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   genPrefab: {fileID: 7523728826806462208, guid: 0f7fba6e1f8777a4d841328612ab8a48, type: 3}
-  mazeSize: {x: 40, y: 40}
+  mazeSize: {x: 20, y: 20}
   Instant: 1
 --- !u!4 &1632416193
 Transform:
