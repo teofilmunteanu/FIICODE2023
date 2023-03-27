@@ -14,6 +14,6 @@ public class RestartTrigger : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Application.LoadLevel(scene.name);
+        SceneManager.LoadScene(scene.name);
     }
 }
