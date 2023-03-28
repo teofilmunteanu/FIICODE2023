@@ -36,7 +36,7 @@ public class SceneChangeManager : MonoBehaviour
         "Room5"
     };
 
-    public readonly Vector3 InitialHallwayPos = new Vector3(500, 7, 500);
+    public readonly Vector3 InitialHallwayPos = new Vector3(545, 1, 518.5f);
 
     public Vector3 LastPlayerPosition { get; set; }
     public int CurrentSceneIndex { get; private set; }
@@ -65,9 +65,6 @@ public class SceneChangeManager : MonoBehaviour
                 break;
             case "Room4":
                 CurrentSceneIndex = 4;
-                break;
-            case "Room5":
-                CurrentSceneIndex = 5;
                 break;
             default:
                 return;

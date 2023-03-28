@@ -25,7 +25,7 @@ public class ProgressManager : MonoBehaviour
     }
     #endregion
 
-    private const int nrOfRooms = 5;
+    private const int nrOfRooms = 4;
 
     public bool[] CompletedRooms { get; set; }
     public bool[] PaperCollectedInRoom { get; set; }
