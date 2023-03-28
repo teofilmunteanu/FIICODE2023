@@ -200,7 +200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 421469762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4b7374336541a44a45bff620f18af6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  genPrefab: {fileID: 7523728826806462208, guid: 0f7fba6e1f8777a4d841328612ab8a48, type: 3}
+  genPrefab: {fileID: 4998407002659926253, guid: 85747458f930e0e4d96d25e17b89a64a, type: 3}
   mazeSize: {x: 20, y: 20}
   Instant: 1
 --- !u!4 &1632416193

@@ -14,14 +14,14 @@ public enum NodeState
 public class MazeNode : MonoBehaviour
 {
     [SerializeField] GameObject[] walls;
-    [SerializeField] MeshRenderer floor;
+    //[SerializeField] MeshRenderer floor;
 
     public void RemoveWall(int wallToRemove)
     {
         walls[wallToRemove].gameObject.SetActive(false);
     }
 
-    public void SetState(NodeState state)
+    /*public void SetState(NodeState state)
     {
         switch (state)
         {
@@ -38,6 +38,6 @@ public class MazeNode : MonoBehaviour
                 floor.material.color = Color.green;
                 break;
         }
-    }
+    }*/
 }
 

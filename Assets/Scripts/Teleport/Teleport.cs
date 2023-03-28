@@ -9,7 +9,7 @@ public class Teleport : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-            Player.transform.position = teleportTarget.transform.position + new Vector3 (0,1,0);
+        Player.transform.position = teleportTarget.transform.position; //+ new Vector3 (0,1,0);
         
     }
 }

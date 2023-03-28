@@ -123,7 +123,7 @@ public class LevelGen : MonoBehaviour
 
             if (newMaze2.transform.position.x + dimensionX > mazeSize.x)
             {
-                mazepos = mazepos + new Vector3(0, 0, 6);
+                mazepos = mazepos + new Vector3(0, 6, 0);
                 reset = true;
                 rows++;
             }
