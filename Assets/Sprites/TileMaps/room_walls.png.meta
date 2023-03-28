@@ -131,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85a65a7f2e896cc4fb401004e4b0bf10
-      internalID: 1418870343
+      spriteID: e9652171ab76eb8418897d08b7f1b7a3
+      internalID: -1994885038
       vertices: []
       indices: 
       edges: []
@@ -152,8 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4afe6bbabe4027943b1d6ea3ceec827c
-      internalID: 514682988
+      spriteID: b43aad43096e0c94bb9f956205c3f9c9
+      internalID: -434623464
       vertices: []
       indices: 
       edges: []
@@ -173,8 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d24a3f4d2a8996049b002af5a202be37
-      internalID: 2019635060
+      spriteID: 9f2ffd9573961594f8b7240ca0328c88
+      internalID: 209769643
       vertices: []
       indices: 
       edges: []
@@ -194,8 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3cd0497f9f3446b45a028268c8e07fb9
-      internalID: -1852403893
+      spriteID: cb61b9c0614d75f44b1e62e4fa8cf623
+      internalID: -925176703
       vertices: []
       indices: 
       edges: []
@@ -215,8 +215,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 323b3d7ca33523647bdf7535ccfe69e0
-      internalID: -1637846182
+      spriteID: e79dff9db414ee94b921ae6285fdcf58
+      internalID: 1621907570
       vertices: []
       indices: 
       edges: []
@@ -236,14 +236,77 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1319a70ee7acdb246bc37bf4875eb68a
-      internalID: -2042797915
+      spriteID: e16691e30f87006498ba83713874fa48
+      internalID: -2145279480
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
       name: room_walls_6
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7147c17ef26c994481967079a5ec8bc
+      internalID: -1839452257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room_walls_7
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ab97c93e972c2641a3bb57b71e3017f
+      internalID: 1052618557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room_walls_8
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64391aada7e647743b7dc8db4f6c6b05
+      internalID: 881981343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room_walls_9
       rect:
         serializedVersion: 2
         x: 0
@@ -257,14 +320,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1bcabea4693ddbf4385d8693dc17d622
-      internalID: -506319823
+      spriteID: be6267f4249580846bc19f7c96c9f342
+      internalID: 1841326234
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_walls_7
+      name: room_walls_10
       rect:
         serializedVersion: 2
         x: 32
@@ -278,14 +341,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39982ec99b2b1bb4c9ef7fcf99b3ff3f
-      internalID: 2123613179
+      spriteID: e484d0ad9b051f240a748d7d0d4790de
+      internalID: -1393144937
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_walls_8
+      name: room_walls_11
       rect:
         serializedVersion: 2
         x: 64
@@ -299,8 +362,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d538e408844a22e438b93e4e8bb881bd
-      internalID: -332614626
+      spriteID: 3ea7efcd4dc4c9848a593f0a044e488c
+      internalID: -75183405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room_walls_12
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae020827e1e5b1846a5d21c494d2068a
+      internalID: 194353707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room_walls_13
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ef46374a70909e47bea114a236aa0f9
+      internalID: 523214495
       vertices: []
       indices: 
       edges: []
@@ -308,7 +413,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: b10b8194ccc8b7f45a2029a49a7f63c9
+    spriteID: f49fac819b2f4e744ba37ebd405043a5
     internalID: 0
     vertices: []
     indices: 
@@ -316,15 +421,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      room_walls_0: 1418870343
-      room_walls_1: 514682988
-      room_walls_2: 2019635060
-      room_walls_3: -1852403893
-      room_walls_4: -1637846182
-      room_walls_5: -2042797915
-      room_walls_6: -506319823
-      room_walls_7: 2123613179
-      room_walls_8: -332614626
+      room_walls_0: -1994885038
+      room_walls_1: -434623464
+      room_walls_10: -1393144937
+      room_walls_11: -75183405
+      room_walls_12: 194353707
+      room_walls_13: 523214495
+      room_walls_2: 209769643
+      room_walls_3: -925176703
+      room_walls_4: 1621907570
+      room_walls_5: -2145279480
+      room_walls_6: -1839452257
+      room_walls_7: 1052618557
+      room_walls_8: 881981343
+      room_walls_9: 1841326234
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
