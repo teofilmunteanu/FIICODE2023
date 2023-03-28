@@ -16,25 +16,10 @@ public class PauseMenu : MonoBehaviour
         PauseManager.Instance.Reset();
     }
 
-    public float timeTest;
-
     void Update()
     {
-        //test
-        timeTest = Time.timeScale;
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            //if (PauseManager.IsGamePaused)
-            //{
-            //    HideMenu();
-            //}
-            //else if (!PauseManager.IsGamePaused || PauseManager.IsModalOpen)
-            //{
-            //    ShowMenu();
-            //}
-
-
             if (PauseManager.Instance.IsPauseMenuOpen)
             {
                 HideMenu();

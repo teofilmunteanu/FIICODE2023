@@ -19,10 +19,6 @@ public class SceneChangeManager : MonoBehaviour
 
             SetSceneIndex();
 
-            // only for testing
-            if (SceneManager.GetActiveScene().name == "Room1 merge beta")
-                LastPlayerPosition = new Vector3(500, 0.01f, 500);
-
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
     }
@@ -78,23 +74,6 @@ public class SceneChangeManager : MonoBehaviour
         }
     }
 
-    //IEnumerator LoadSceneAsync(string sceneName)
-    //{
-    //    AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
-
-    //    while (!asyncLoad.isDone)
-    //    {
-    //        yield return null;
-    //    }
-
-    //    SetSceneIndex();
-
-    //    if (CurrentSceneIndex == 0)
-    //    {
-    //        GameObject.FindGameObjectWithTag("Player").transform.position = LastPlayerPosition;
-    //    }
-    //}
-
     public void LoadRoom(int targetRoomNr, Vector3 lastPlayerPosition)
     {
         try
@@ -103,17 +82,7 @@ public class SceneChangeManager : MonoBehaviour
 
             if (targetRoomNr == 1 || IsRoomCompleted(targetRoomNr - 1))
             {
-                //StartCoroutine(LoadSceneAsync(scenes[targetRoomNr]));
                 SceneManager.LoadScene(gameScenes[targetRoomNr]);
-
-                //switch (targetRoomNr)
-                //{
-                //    case 1:
-                //      //set to pos1
-                //    case 2:
-                //      //set to pos2
-                //    ...
-                //}
             }
             else
             {
@@ -137,7 +106,6 @@ public class SceneChangeManager : MonoBehaviour
 
     public void LoadMainScene()
     {
-        //StartCoroutine(LoadSceneAsync(scenes[0]));
         SceneManager.LoadScene(gameScenes[0]);
     }
 
