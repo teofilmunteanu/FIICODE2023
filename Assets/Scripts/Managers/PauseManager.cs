@@ -2,18 +2,29 @@
 
 namespace Assets.Scripts.Managers
 {
-    public static class PauseManager
+    public class PauseManager : MonoBehaviour
     {
-        public static bool IsGamePaused
+        #region Singleton Init
+        public static PauseManager Instance;
+
+        void Awake()
         {
-            get
+            if (Instance != null)
             {
-                return Time.timeScale == 0;
+                Destroy(this);
             }
+            else
+            {
+                Instance = this;
+            }
+
+            DontDestroyOnLoad(gameObject);
         }
-        public static bool IsModalOpen { get; set; }
-        private static bool isPauseMenuOpen;
-        public static bool IsPauseMenuOpen
+        #endregion
+
+        public bool IsModalOpen;
+        public bool isPauseMenuOpen;
+        public bool IsPauseMenuOpen
         {
             get
             {
@@ -36,11 +47,11 @@ namespace Assets.Scripts.Managers
 
 
         public delegate void OnMenuOpenChangeDelegate(bool newVal);
-        public static event OnMenuOpenChangeDelegate OnMenuOpenChange;
+        public event OnMenuOpenChangeDelegate OnMenuOpenChange;
 
-        public static void Resume()
+        public void Resume()
         {
-            if (IsGamePaused)
+            if (IsGamePaused())
             {
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
@@ -48,9 +59,9 @@ namespace Assets.Scripts.Managers
             }
         }
 
-        public static void Pause()
+        public void Pause()
         {
-            if (!IsGamePaused)
+            if (!IsGamePaused())
             {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
@@ -58,11 +69,19 @@ namespace Assets.Scripts.Managers
             }
         }
 
-        public static void Reset()
+        public void Reset()
         {
-            Resume();
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            Time.timeScale = 1;
+
             IsPauseMenuOpen = false;
             IsModalOpen = false;
+        }
+
+        public bool IsGamePaused()
+        {
+            return Time.timeScale == 0;
         }
     }
 }

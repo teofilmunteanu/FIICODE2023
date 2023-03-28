@@ -13,7 +13,7 @@ namespace Assets.Scripts.Interact
         {
             base.OnDeselect(eventData);
 
-            if (!mouseOver && !PauseManager.IsPauseMenuOpen)
+            if (!mouseOver && !PauseManager.Instance.IsPauseMenuOpen)
             {
                 ContainerUI.SetActive(false);
             }

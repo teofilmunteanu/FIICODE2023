@@ -9,17 +9,17 @@ namespace Assets.Scripts.Interact
         [SerializeField]
         Animator modalAnimator;
 
-        public void CloseModal()
-        {
-            modalAnimator.SetTrigger("Open");
-            PauseManager.Resume();
-        }
+        // public void CloseModal()
+        // {
+        //     modalAnimator.SetTrigger("Open");
+        //     PauseManager.Instance.Resume();
+        // }
 
         public override void OnDeselect(BaseEventData eventData)
         {
             base.OnDeselect(eventData);
 
-            if (!mouseOver && !PauseManager.IsPauseMenuOpen)
+            if (!mouseOver && !PauseManager.Instance.IsPauseMenuOpen)
             {
                 modalAnimator.SetTrigger("Open");
             }

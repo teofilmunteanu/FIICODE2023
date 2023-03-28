@@ -4,17 +4,17 @@ public abstract class PauseInteractables : Interactable
 {
     public override void Interact()
     {
-        if (PauseManager.IsGamePaused)
+        if (PauseManager.Instance.IsGamePaused() && PauseManager.Instance.IsModalOpen)
         {
-            PauseManager.IsModalOpen = false;
+            PauseManager.Instance.IsModalOpen = false;
 
-            PauseManager.Resume();
+            PauseManager.Instance.Resume();
         }
         else
         {
-            PauseManager.IsModalOpen = true;
+            PauseManager.Instance.IsModalOpen = true;
 
-            PauseManager.Pause();
+            PauseManager.Instance.Pause();
         }
     }
 }

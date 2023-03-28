@@ -8,7 +8,7 @@ public class ModalCloseUI : MonoBehaviour, IDeselectHandler, IPointerEnterHandle
 
     private void Start()
     {
-        PauseManager.OnMenuOpenChange += OnMenuOpenChangeHandler;
+        PauseManager.Instance.OnMenuOpenChange += OnMenuOpenChangeHandler;
     }
 
     protected void OnEnable()
@@ -18,9 +18,10 @@ public class ModalCloseUI : MonoBehaviour, IDeselectHandler, IPointerEnterHandle
 
     public virtual void OnDeselect(BaseEventData eventData)
     {
-        if (!mouseOver && !PauseManager.IsPauseMenuOpen)
+        if (!mouseOver && !PauseManager.Instance.IsPauseMenuOpen && PauseManager.Instance.IsModalOpen)
         {
-            PauseManager.Resume();
+            PauseManager.Instance.Resume();
+            PauseManager.Instance.IsModalOpen = false;
         }
     }
 

@@ -31,7 +31,7 @@ public class PlayerMovement2D : MonoBehaviour
         rb.transform.transform.localRotation = Quaternion.identity;
 
         //rotation shouldn't be updated when paused
-        if (!PauseManager.IsGamePaused)
+        if (!PauseManager.Instance.IsGamePaused())
         {
             if (movement.x < 0)
             {

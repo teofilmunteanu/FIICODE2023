@@ -7,7 +7,7 @@ public abstract class Interactable : MonoBehaviour
     public void BaseInteract()
     {
         Debug.Log("Interact with " + gameObject.name);
-        if (!PauseManager.IsPauseMenuOpen)
+        if (!PauseManager.Instance.IsPauseMenuOpen)
         {
             Interact();
         }
