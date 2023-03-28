@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.Tilemaps;
 using static UnityEngine.GraphicsBuffer;
 
 public class EnemyFollow : MonoBehaviour
 {
     [SerializeField] PlayerMovement2Dmodified MovementScript;
     [SerializeField] GameObject[] obj ;
+    [SerializeField] TilemapRenderer tm;
     // public Transform Player;
     List<Vector2> position;
     bool executa = false;
@@ -16,7 +18,6 @@ public class EnemyFollow : MonoBehaviour
     private IEnumerator couritine;
     void Start()
     {
-        obj = new GameObject[5];
         position = new List<Vector2>();
         position.Add(transform.position);
         for (float j = transform.position.x; j < MovementScript.rb.position.x; j += 0.2f)
@@ -28,7 +29,7 @@ public class EnemyFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+        int j = 0;
         if (MovementScript.movement != Vector2.zero)
         {
             position.Add(MovementScript.rb.position);
@@ -40,9 +41,19 @@ public class EnemyFollow : MonoBehaviour
             //InvokeRepeating("Following", 0.5f, 1f * Time.deltaTime);
             StartCoroutine(couritine);
         }
-        if (obj[1].GetComponent<PressedButton>().isPressed)
+        for (int i = 0; i < obj.Length; i++)
+        {
+            if (obj[i].GetComponent<PressedButton>().isPressed)
+            {
+                j++;
+            }
+        }
+        if (j==5)
         {
             StopCoroutine(couritine);
+            tm.enabled = false;
+            foreach(var collider in tm.GetComponentsInChildren<Collider2D>())
+                collider.enabled = false;
         }
     }
 
