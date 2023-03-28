@@ -75,7 +75,7 @@ public class KeyPadManager : MonoBehaviour
             char nrToAdd = ' ';
             do
             {
-                nrToAdd = (char)('0' + Random.Range(rangeBegin, rangeEnd));
+                nrToAdd = (char)('0' + Random.Range(rangeBegin, rangeEnd + 1));
 
             } while (chars.Contains(nrToAdd));
 
