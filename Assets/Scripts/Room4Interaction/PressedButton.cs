@@ -5,7 +5,6 @@ using UnityEngine;
 public class PressedButton : MonoBehaviour
 {
     [SerializeField] Transform snake;
-    SpriteRenderer renderer;
     public bool isPressed = false;
 
     private void Update()
