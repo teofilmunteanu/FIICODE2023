@@ -36,7 +36,7 @@ public class SceneChangeManager : MonoBehaviour
         "Room5"
     };
 
-    public readonly Vector3 InitialHallwayPos = new Vector3(545, 1, 518.5f);
+    public readonly Vector3 InitialHallwayPos = new Vector3(547, 1.3f, 518.5f);
 
     public Vector3 LastPlayerPosition { get; set; }
     public int CurrentSceneIndex { get; private set; }

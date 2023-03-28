@@ -39,9 +39,18 @@ public class SceneChanger : MonoBehaviour
         if (sceneChangeManager.IsMainScene())
         {
             Vector3 doorPos = this.transform.position;
-            Vector3 offset = new Vector3(0, 0, -2);
+            //Vector3 offset;
+            //if (doorPos.z > SceneChangeManager.Instance.InitialHallwayPos.z)
+            //{
+            //    offset = new Vector3(0, 0, -2);
+            //}
+            //else
+            //{
+            //    offset = new Vector3(0, 0, 2);
+            //}
+            Vector3 newPos = SceneChangeManager.Instance.InitialHallwayPos + new Vector3(doorPos.x - SceneChangeManager.Instance.InitialHallwayPos.x, 0, 0);
 
-            sceneChangeManager.LoadRoom(targetRoomNr, doorPos + offset);
+            sceneChangeManager.LoadRoom(targetRoomNr, newPos);
         }
         else
         {

@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Animations;
 using UnityEngine.Tilemaps;
-using static UnityEngine.GraphicsBuffer;
 
 public class EnemyFollow : MonoBehaviour
 {
     [SerializeField] PlayerMovement2Dmodified MovementScript;
-    [SerializeField] GameObject[] obj ;
+    [SerializeField] GameObject[] obj;
     [SerializeField] TilemapRenderer tm;
     // public Transform Player;
     List<Vector2> position;
@@ -22,7 +20,7 @@ public class EnemyFollow : MonoBehaviour
         position.Add(transform.position);
         for (float j = transform.position.x; j < MovementScript.rb.position.x; j += 0.2f)
         {
-            position.Add(new Vector2(j,transform.position.y));
+            position.Add(new Vector2(j, transform.position.y));
         }
         couritine = Following();
     }
@@ -48,11 +46,11 @@ public class EnemyFollow : MonoBehaviour
                 j++;
             }
         }
-        if (j==5)
+        if (j == 5)
         {
             StopCoroutine(couritine);
             tm.enabled = false;
-            foreach(var collider in tm.GetComponentsInChildren<Collider2D>())
+            foreach (var collider in tm.GetComponentsInChildren<Collider2D>())
                 collider.enabled = false;
         }
     }
@@ -74,7 +72,7 @@ public class EnemyFollow : MonoBehaviour
                 position.RemoveAt(0);
                 //yield return new WaitForSeconds(.1f);
             }
-            yield return new WaitForSeconds(0.9f * Time.fixedDeltaTime);
+            yield return new WaitForSeconds(1f * Time.fixedDeltaTime);
         }
 
     }

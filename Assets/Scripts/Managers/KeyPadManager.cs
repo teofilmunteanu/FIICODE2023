@@ -21,8 +21,11 @@ public class KeyPadManager : MonoBehaviour
     [SerializeField]
     private InteractableStorage[] interactableStorages;
 
+
+    [SerializeField]
     private char[] passCode;
 
+    [SerializeField]
     private char[] leversOrder;
 
     private readonly string wrongPrompt = "WRONG";
