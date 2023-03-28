@@ -15069,6 +15069,7 @@ GameObject:
   - component: {fileID: 1936153574}
   - component: {fileID: 1936153573}
   - component: {fileID: 1936153572}
+  - component: {fileID: 1936153577}
   m_Layer: 0
   m_Name: Spike Colliders
   m_TagString: Untagged
@@ -15269,6 +15270,18 @@ PolygonCollider2D:
       - {x: -5.872573, y: 0.94290334}
       - {x: -7.022324, y: 0.89186025}
       - {x: -7.9040256, y: 0.92273575}
+--- !u!114 &1936153577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936153570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc568cf2166989d41bc44168fde381ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1955024730
 GameObject:
   m_ObjectHideFlags: 0
