@@ -38,6 +38,9 @@ public class ModalCloseUI : MonoBehaviour, IDeselectHandler, IPointerEnterHandle
 
     private void OnMenuOpenChangeHandler(bool newVal)
     {
-        EventSystem.current.SetSelectedGameObject(gameObject);
+        if (this != null)
+        {
+            EventSystem.current.SetSelectedGameObject(gameObject);
+        }
     }
 }

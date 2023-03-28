@@ -13,11 +13,16 @@ public class PauseMenu : MonoBehaviour
     {
         sceneChangeManager = SceneChangeManager.Instance;
 
-        PauseManager.Resume();
+        PauseManager.Reset();
     }
+
+    public float timeTest;
 
     void Update()
     {
+        //test
+        timeTest = Time.timeScale;
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             //if (PauseManager.IsGamePaused)
@@ -30,7 +35,7 @@ public class PauseMenu : MonoBehaviour
             //}
 
 
-            if (pauseMenu.activeSelf)
+            if (PauseManager.IsPauseMenuOpen)
             {
                 HideMenu();
             }
@@ -63,11 +68,19 @@ public class PauseMenu : MonoBehaviour
         principalMenu.SetActive(true);
         optionsMenu.SetActive(false);
 
-        PauseManager.Pause();
+        if (!PauseManager.IsModalOpen)
+        {
+            PauseManager.Pause();
+        }
     }
 
     public void Exit()
     {
+        //if (PauseManager.IsModalOpen)
+        //{
+        //    PauseManager.IsModalOpen = false;
+        //}
+
         sceneChangeManager.LoadMainMenu();
     }
 }
