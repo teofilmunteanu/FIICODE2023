@@ -47,7 +47,7 @@ public class MazeGen : MonoBehaviour
         {
             for (int y = 0; y < size.y; y++)
             {
-                Vector3 nodePos = new Vector3(x - (size.x / 2f), 0, y - (size.y / 2f))+transform.GetComponentInParent<Transform>().position;
+                Vector3 nodePos = new Vector3(x - (size.x / 2f), y - (size.y / 2f),0)+transform.GetComponentInParent<Transform>().position;
                 MazeNode newNode = Instantiate(nodePrefab, nodePos, Quaternion.identity, transform);
                 nodes.Add(newNode);
             }
@@ -60,7 +60,7 @@ public class MazeGen : MonoBehaviour
 
         // Choose starting node
         currentPath.Add(nodes[Random.Range(0, nodes.Count)]);
-        currentPath[0].SetState(NodeState.Current);
+        //currentPath[0].SetState(NodeState.Current);
 
         while (completedNodes.Count < nodes.Count)
         {
@@ -143,7 +143,7 @@ public class MazeGen : MonoBehaviour
                 }
 
                 currentPath.Add(chosenNode);
-                chosenNode.SetState(NodeState.Current);
+                //chosenNode.SetState(NodeState.Current);
                 DeadEndFound = false;
             }
             else
@@ -156,7 +156,7 @@ public class MazeGen : MonoBehaviour
                     DeadEndFound = true;
                 }
 
-                    currentPath[currentPath.Count - 1].SetState(NodeState.Completed);
+                    //currentPath[currentPath.Count - 1].SetState(NodeState.Completed);
                 
                 
                 currentPath.RemoveAt(currentPath.Count - 1);
@@ -166,8 +166,12 @@ public class MazeGen : MonoBehaviour
 
         foreach (MazeNode n in deadEnds)
         {
-            n.SetState(NodeState.DeadEnd);
+           // n.SetState(NodeState.DeadEnd);
         }
+        int teleport=Random.Range(0, deadEnds.Count - 1);
+
+        deadEnds[teleport].GetComponent<BoxCollider2D>().enabled = true;
+
 
     }
 
@@ -195,7 +199,7 @@ public class MazeGen : MonoBehaviour
 
         // Choose starting node
         currentPath.Add(nodes[Random.Range(0, nodes.Count)]);
-        currentPath[0].SetState(NodeState.Current);
+        //currentPath[0].SetState(NodeState.Current);
 
         while (completedNodes.Count < nodes.Count)
         {
@@ -275,7 +279,7 @@ public class MazeGen : MonoBehaviour
                 }
 
                 currentPath.Add(chosenNode);
-                chosenNode.SetState(NodeState.Current);
+                //chosenNode.SetState(NodeState.Current);
                 DeadEndFound = false;
             }
             else
@@ -288,7 +292,7 @@ public class MazeGen : MonoBehaviour
                     DeadEndFound = true;
                 }
 
-                currentPath[currentPath.Count - 1].SetState(NodeState.Completed);
+                //currentPath[currentPath.Count - 1].SetState(NodeState.Completed);
                 
                 currentPath.RemoveAt(currentPath.Count - 1);
             }
@@ -301,7 +305,7 @@ public class MazeGen : MonoBehaviour
 
         foreach (MazeNode n in deadEnds)
         {
-            n.SetState(NodeState.DeadEnd);
+            //n.SetState(NodeState.DeadEnd);
         }
     }
 
