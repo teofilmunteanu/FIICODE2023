@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3873,6 +3873,8 @@ MonoBehaviour:
   - {fileID: 356514795}
   - {fileID: 1551582815}
   - {fileID: 1837795358}
+  passCode: 
+  leversOrder: 
 --- !u!4 &700984315
 Transform:
   m_ObjectHideFlags: 0
@@ -9501,6 +9503,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97fe350b61f3e1043ac467a803b422d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsModalOpen: 0
+  isPauseMenuOpen: 0
 --- !u!4 &1169781961
 Transform:
   m_ObjectHideFlags: 0
@@ -10404,7 +10408,6 @@ MonoBehaviour:
   pauseMenu: {fileID: 45304603}
   principalMenu: {fileID: 199880781}
   optionsMenu: {fileID: 280105959}
-  timeTest: 0
 --- !u!222 &1305101984
 CanvasRenderer:
   m_ObjectHideFlags: 0

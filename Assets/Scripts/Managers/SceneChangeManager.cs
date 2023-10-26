@@ -31,9 +31,9 @@ public class SceneChangeManager : MonoBehaviour
         "Hallway",
         "Room1",
         "Room2",
-        "Room3",
-        "Room4",
-        "Room5"
+        "Room3"
+        //"Room4",
+        //"Room5"
     };
 
     public readonly Vector3 InitialHallwayPos = new Vector3(547, 1.3f, 518.5f);
@@ -63,9 +63,9 @@ public class SceneChangeManager : MonoBehaviour
             case "Room3":
                 CurrentSceneIndex = 3;
                 break;
-            case "Room4":
-                CurrentSceneIndex = 4;
-                break;
+            //case "Room4":
+            //    CurrentSceneIndex = 4;
+            //    break;
             default:
                 return;
         }

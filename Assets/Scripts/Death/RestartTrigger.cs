@@ -1,19 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class RestartTrigger : MonoBehaviour
 {
     private Scene scene;
+    [SerializeField] EnemyFollow enemyScript;
+
     void Start()
     {
         scene = SceneManager.GetActiveScene();
     }
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        SceneManager.LoadScene(scene.name);
+        if (!enemyScript.gameFinished)
+        {
+            SceneManager.LoadScene(scene.name);
+        }
     }
 }

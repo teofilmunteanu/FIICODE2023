@@ -20,12 +20,12 @@ public class ProgressManager : MonoBehaviour
 
             PaperCollectedInRoom = new bool[nrOfRooms];
             //for testing I set first two to "true", only set the first one
-            CompletedRooms = new bool[] { true, true, false, false, false };
+            CompletedRooms = new bool[] { true, true, false/*, false, false */};
         }
     }
     #endregion
 
-    private const int nrOfRooms = 4;
+    private const int nrOfRooms = 3;
 
     public bool[] CompletedRooms { get; set; }
     public bool[] PaperCollectedInRoom { get; set; }
@@ -33,7 +33,7 @@ public class ProgressManager : MonoBehaviour
 
     public void ResetProgress()
     {
-        CompletedRooms = new bool[] { false, false, false, false, false };
+        CompletedRooms = new bool[] { false, false, false/*, false, false */};
         PaperCollectedInRoom = new bool[nrOfRooms];
         SceneChangeManager.Instance.ResetPosition();
     }

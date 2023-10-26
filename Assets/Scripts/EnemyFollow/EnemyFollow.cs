@@ -5,71 +5,98 @@ using UnityEngine.Tilemaps;
 
 public class EnemyFollow : MonoBehaviour
 {
-    [SerializeField] PlayerMovement2Dmodified MovementScript;
-    [SerializeField] GameObject[] obj;
+    [SerializeField] PlayerMovement2Dmodified playerMovementScript;
+    [SerializeField] GameObject[] buttons;
     [SerializeField] TilemapRenderer tm;
-    // public Transform Player;
-    List<Vector2> position;
-    bool executa = false;
+
+    //maybe follow the collider's positions (cuz the snake has to touch the collider to catch the player)
+    //---OOOR, setup a 2nd collider for snake and player
+    List<Vector2> playerPositions;
+    bool execute = false;
     public GameObject prefab;
-    int i = 0;
+
+    int buttonsPressed;
+    public bool gameFinished;
+
     private IEnumerator couritine;
     void Start()
     {
-        position = new List<Vector2>();
-        position.Add(transform.position);
-        for (float j = transform.position.x; j < MovementScript.rb.position.x; j += 0.2f)
+        playerPositions = new List<Vector2>
         {
-            position.Add(new Vector2(j, transform.position.y));
+           transform.position
+        };
+
+        float distance = Vector2.Distance(transform.position, playerMovementScript.rb.position);
+        int numberOfPoints = Mathf.CeilToInt(distance / 0.1f);
+        Vector2 positionIncrement = (playerMovementScript.rb.position - (Vector2)transform.position) / numberOfPoints;
+
+        for (int i = 0; i < numberOfPoints; i++)
+        {
+            Vector2 newPosition = (Vector2)transform.position + i * positionIncrement;
+            playerPositions.Add(newPosition);
         }
+
+        gameFinished = false;
+
         couritine = Following();
     }
 
     private void FixedUpdate()
     {
-        int j = 0;
-        if (MovementScript.movement != Vector2.zero)
+        if (playerMovementScript.movement != Vector2.zero)
         {
-            position.Add(MovementScript.rb.position);
+            playerPositions.Add(playerMovementScript.rb.position);
         }
-        transform.right = new Vector3(position[0].x, position[0].y, 0) - transform.position;
-        if (position.Count > 50 && !executa)
+        transform.right = new Vector3(playerPositions[0].x, playerPositions[0].y, 0) - transform.position;
+        if (playerPositions.Count > 50 && !execute)
         {
-            executa = true;
+            execute = true;
             //InvokeRepeating("Following", 0.5f, 1f * Time.deltaTime);
             StartCoroutine(couritine);
         }
-        for (int i = 0; i < obj.Length; i++)
+
+
+        buttonsPressed = 0;
+
+        for (int i = 0; i < buttons.Length; i++)
         {
-            if (obj[i].GetComponent<PressedButton>().isPressed)
+            if (buttons[i].GetComponent<PressedButton>().isPressed)
             {
-                j++;
+                buttonsPressed++;
             }
         }
-        if (j == 5)
+
+        if (buttonsPressed == buttons.Length - 3)
         {
             StopCoroutine(couritine);
             tm.enabled = false;
+
+            gameFinished = true;
+
             foreach (var collider in tm.GetComponentsInChildren<Collider2D>())
+            {
                 collider.enabled = false;
+            }
         }
     }
 
     IEnumerator Following()
     {
+        int i = 0;
+
         while (true)
         {
-            if (position.Count > 1)
+            if (playerPositions.Count > 2)
             {
-                transform.position = position[0];
-                GameObject newObject;
+                transform.position = playerPositions[2];
+                //GameObject newObject;
                 i++;
                 if (i % 3 == 0)
                 {
-                    newObject = Instantiate(prefab, position[1], Quaternion.identity);
+                    Instantiate(prefab, playerPositions[0], Quaternion.identity);
                     i = i / 3;
                 }
-                position.RemoveAt(0);
+                playerPositions.RemoveAt(0);
                 //yield return new WaitForSeconds(.1f);
             }
             yield return new WaitForSeconds(1f * Time.fixedDeltaTime);
