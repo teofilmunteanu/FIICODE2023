@@ -71,34 +71,41 @@ public class SceneChangeManager : MonoBehaviour
         }
     }
 
-    public void LoadRoom(int targetRoomNr, Vector3 lastPlayerPosition)
+    public bool TryLoadAccessibleRoom(int targetRoomNr, Vector3 lastPlayerPosition)
     {
         try
         {
             UpdateLastPlayerPosition(lastPlayerPosition);
 
-            if (targetRoomNr == 1 || IsRoomCompleted(targetRoomNr - 1))
+            if (!IsRoomAvailable(targetRoomNr))
             {
-                SceneManager.LoadScene(gameScenes[targetRoomNr]);
+                return false;
             }
-            else
-            {
-                Debug.Log("Room inaccessible, complete previous rooms.");
-            }
+
+            SceneManager.LoadScene(gameScenes[targetRoomNr]);
+
+            return true;
         }
         catch (NullReferenceException ex)
         {
             Debug.LogException(ex);
+            return false;
         }
         catch (Exception ex)
         {
             Debug.Log("Invalid room. Error:" + ex.Message);
+            return false;
         }
     }
 
     bool IsRoomCompleted(int roomNr)
     {
         return ProgressManager.Instance.CompletedRooms[roomNr - 1];
+    }
+
+    bool IsRoomAvailable(int roomNr)
+    {
+        return roomNr == 1 || IsRoomCompleted(roomNr - 1);
     }
 
     public void LoadMainScene()

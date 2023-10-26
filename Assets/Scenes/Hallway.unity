@@ -948,8 +948,8 @@ GameObject:
   - component: {fileID: 338662338}
   - component: {fileID: 338662337}
   - component: {fileID: 338662335}
-  - component: {fileID: 338662334}
   - component: {fileID: 338662339}
+  - component: {fileID: 338662340}
   m_Layer: 7
   m_Name: Door2
   m_TagString: Untagged
@@ -957,19 +957,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &338662334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 338662333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a81ca3d08030f0b429468dbe12dd132f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetRoomNr: 2
 --- !u!65 &338662335
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1018,7 +1005,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31a2bd6054b8fc4cb6a0c39ed47ff56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptMessage: 
+  promptMessage: Enter Room 2
+--- !u!114 &338662340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338662333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df8a227549145d54cadb88c0759fa4d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRoomNr: 2
+  DoorObject: {fileID: 338662339}
 --- !u!1 &354983791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,8 +1195,8 @@ GameObject:
   - component: {fileID: 406067138}
   - component: {fileID: 406067137}
   - component: {fileID: 406067135}
-  - component: {fileID: 406067139}
   - component: {fileID: 406067140}
+  - component: {fileID: 406067141}
   m_Layer: 7
   m_Name: Door1
   m_TagString: Untagged
@@ -1239,19 +1240,6 @@ Transform:
   m_Father: {fileID: 1343815229}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &406067139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 406067134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a81ca3d08030f0b429468dbe12dd132f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetRoomNr: 1
 --- !u!114 &406067140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1264,7 +1252,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31a2bd6054b8fc4cb6a0c39ed47ff56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptMessage: d1
+  promptMessage: Enter Room 1
+--- !u!114 &406067141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406067134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df8a227549145d54cadb88c0759fa4d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRoomNr: 1
+  DoorObject: {fileID: 406067140}
 --- !u!1 &418478325
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,88 +1672,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 547110318}
   m_CullTransparentMesh: 1
---- !u!1 &550730703
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 550730707}
-  - component: {fileID: 550730706}
-  - component: {fileID: 550730705}
-  - component: {fileID: 550730704}
-  - component: {fileID: 550730708}
-  m_Layer: 7
-  m_Name: Door4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &550730704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 550730703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a81ca3d08030f0b429468dbe12dd132f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetRoomNr: 4
---- !u!65 &550730705
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 550730703}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &550730706
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 550730703}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &550730707
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 550730703}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.536743, y: -0.41577768, z: -2.581726}
-  m_LocalScale: {x: 1, y: 2.0393, z: 0.060273223}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1343815229}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &550730708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 550730703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c31a2bd6054b8fc4cb6a0c39ed47ff56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  promptMessage: 
 --- !u!1 &568196600
 GameObject:
   m_ObjectHideFlags: 0
@@ -3247,8 +3167,8 @@ GameObject:
   - component: {fileID: 1192636520}
   - component: {fileID: 1192636519}
   - component: {fileID: 1192636518}
-  - component: {fileID: 1192636517}
   - component: {fileID: 1192636521}
+  - component: {fileID: 1192636522}
   m_Layer: 7
   m_Name: Door3
   m_TagString: Untagged
@@ -3256,19 +3176,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1192636517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1192636516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a81ca3d08030f0b429468dbe12dd132f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetRoomNr: 3
 --- !u!65 &1192636518
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3317,7 +3224,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31a2bd6054b8fc4cb6a0c39ed47ff56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptMessage: 
+  promptMessage: Enter Room 3
+--- !u!114 &1192636522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192636516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df8a227549145d54cadb88c0759fa4d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRoomNr: 3
+  DoorObject: {fileID: 1192636521}
 --- !u!1 &1313954951
 GameObject:
   m_ObjectHideFlags: 0
@@ -3425,7 +3346,6 @@ Transform:
   - {fileID: 406067138}
   - {fileID: 338662338}
   - {fileID: 1192636520}
-  - {fileID: 550730707}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
