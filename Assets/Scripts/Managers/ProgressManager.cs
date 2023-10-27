@@ -20,7 +20,7 @@ public class ProgressManager : MonoBehaviour
 
             PaperCollectedInRoom = new bool[nrOfRooms];
             //for testing I set first two to "true", only set the first one
-            CompletedRooms = new bool[] { true, true, false/*, false, false */};
+            CompletedRooms = new bool[] { false, false, false/*, false, false */};
         }
     }
     #endregion
@@ -52,7 +52,7 @@ public class ProgressManager : MonoBehaviour
 
     public void CompleteRoom(int index)
     {
-        if (index >= 0 && index < nrOfRooms)
+        if (index >= 1 && index <= nrOfRooms)
         {
             CompletedRooms[index - 1] = true;
 

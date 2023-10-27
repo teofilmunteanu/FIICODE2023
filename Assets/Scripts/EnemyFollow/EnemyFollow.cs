@@ -9,8 +9,6 @@ public class EnemyFollow : MonoBehaviour
     [SerializeField] GameObject[] buttons;
     [SerializeField] TilemapRenderer tm;
 
-    //maybe follow the collider's positions (cuz the snake has to touch the collider to catch the player)
-    //---OOOR, setup a 2nd collider for snake and player
     List<Vector2> playerPositions;
     bool execute = false;
     public GameObject prefab;
@@ -18,7 +16,10 @@ public class EnemyFollow : MonoBehaviour
     int buttonsPressed;
     public bool gameFinished;
 
+    public float playerColliderOffsetY;
+
     private IEnumerator couritine;
+
     void Start()
     {
         playerPositions = new List<Vector2>
@@ -26,9 +27,13 @@ public class EnemyFollow : MonoBehaviour
            transform.position
         };
 
-        float distance = Vector2.Distance(transform.position, playerMovementScript.rb.position);
+        BoxCollider2D playerCollider = playerMovementScript.rb.GetComponent<BoxCollider2D>();
+        playerColliderOffsetY = 2 * (playerCollider.offset.y - playerCollider.size.y);
+        Vector2 playerLegsPos = new Vector2(playerMovementScript.rb.position.x, playerMovementScript.rb.position.y + playerColliderOffsetY);
+
+        float distance = Vector2.Distance(transform.position, playerLegsPos);
         int numberOfPoints = Mathf.CeilToInt(distance / 0.1f);
-        Vector2 positionIncrement = (playerMovementScript.rb.position - (Vector2)transform.position) / numberOfPoints;
+        Vector2 positionIncrement = (playerLegsPos - (Vector2)transform.position) / numberOfPoints;
 
         for (int i = 0; i < numberOfPoints; i++)
         {
@@ -45,9 +50,15 @@ public class EnemyFollow : MonoBehaviour
     {
         if (playerMovementScript.movement != Vector2.zero)
         {
-            playerPositions.Add(playerMovementScript.rb.position);
+            Vector2 playerLegsPos = new Vector2(playerMovementScript.rb.position.x, playerMovementScript.rb.position.y + playerColliderOffsetY);
+            playerPositions.Add(playerLegsPos);
         }
         transform.right = new Vector3(playerPositions[0].x, playerPositions[0].y, 0) - transform.position;
+
+        Vector3 currentRot = transform.rotation.eulerAngles;
+        currentRot.z = 0;
+        transform.rotation = Quaternion.Euler(currentRot);
+
         if (playerPositions.Count > 50 && !execute)
         {
             execute = true;
@@ -66,7 +77,7 @@ public class EnemyFollow : MonoBehaviour
             }
         }
 
-        if (buttonsPressed == buttons.Length - 3)
+        if (buttonsPressed == buttons.Length - 4)
         {
             StopCoroutine(couritine);
             tm.enabled = false;

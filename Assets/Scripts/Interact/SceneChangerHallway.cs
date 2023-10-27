@@ -13,13 +13,13 @@ public class SceneChangerHallway : SceneChanger
         base.Start();
     }
 
-    //void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.name == "Player")
-    //    {
-    //        ChangeScene();
-    //    }
-    //}
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject == Player)
+        {
+            ChangeScene();
+        }
+    }
 
     protected override void ChangeScene()
     {

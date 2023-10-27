@@ -1018,6 +1018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df8a227549145d54cadb88c0759fa4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 401856812}
   targetRoomNr: 2
   DoorObject: {fileID: 338662339}
 --- !u!1 &354983791
@@ -1167,7 +1168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f223a77d0ddba2b4a96f804ced8d970f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 111264678}
+  cam: {fileID: 484013185}
   distance: 3
   mask:
     serializedVersion: 2
@@ -1265,6 +1266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df8a227549145d54cadb88c0759fa4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 401856812}
   targetRoomNr: 1
   DoorObject: {fileID: 406067140}
 --- !u!1 &418478325
@@ -1484,6 +1486,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 475290961}
   m_CullTransparentMesh: 1
+--- !u!4 &484013185 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2297568558964955914, guid: c6bdc3f503a0c6d459db3dbdd71f5cc6, type: 3}
+  m_PrefabInstance: {fileID: 2297568557660053045}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &532676039 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7310905457614242882, guid: 83757253d5a3dc34683609d777114660, type: 3}
@@ -3237,6 +3244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df8a227549145d54cadb88c0759fa4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 401856812}
   targetRoomNr: 3
   DoorObject: {fileID: 1192636521}
 --- !u!1 &1313954951

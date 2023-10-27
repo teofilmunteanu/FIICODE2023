@@ -31790,6 +31790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyScript: {fileID: 1372958340}
+  Player: {fileID: 0}
 --- !u!1 &202029412
 GameObject:
   m_ObjectHideFlags: 0
@@ -31801,6 +31802,7 @@ GameObject:
   - component: {fileID: 202029415}
   - component: {fileID: 202029414}
   - component: {fileID: 202029413}
+  - component: {fileID: 202029416}
   m_Layer: 0
   m_Name: Square (4)
   m_TagString: Untagged
@@ -31820,7 +31822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 363c236db9625484d895f8c3a9e1cd89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snake: {fileID: 1372958339}
+  Snake: {fileID: 1372958337}
   isPressed: 0
 --- !u!212 &202029414
 SpriteRenderer:
@@ -31882,13 +31884,39 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 202029412}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.5, y: -1.5, z: 0}
+  m_LocalPosition: {x: -4.488, y: -0.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &202029416
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202029412}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &338135682
 GameObject:
   m_ObjectHideFlags: 0
@@ -44473,6 +44501,7 @@ GameObject:
   - component: {fileID: 633347455}
   - component: {fileID: 633347454}
   - component: {fileID: 633347453}
+  - component: {fileID: 633347456}
   m_Layer: 0
   m_Name: Square (2)
   m_TagString: Untagged
@@ -44492,7 +44521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 363c236db9625484d895f8c3a9e1cd89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snake: {fileID: 1372958339}
+  Snake: {fileID: 1372958337}
   isPressed: 0
 --- !u!212 &633347454
 SpriteRenderer:
@@ -44561,6 +44590,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &633347456
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633347452}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &891834459
 GameObject:
   m_ObjectHideFlags: 0
@@ -44572,6 +44627,7 @@ GameObject:
   - component: {fileID: 891834462}
   - component: {fileID: 891834461}
   - component: {fileID: 891834464}
+  - component: {fileID: 891834465}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -44658,8 +44714,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 363c236db9625484d895f8c3a9e1cd89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snake: {fileID: 1372958339}
+  Snake: {fileID: 1372958337}
   isPressed: 0
+--- !u!61 &891834465
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891834459}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &977312291
 GameObject:
   m_ObjectHideFlags: 0
@@ -44674,7 +44756,6 @@ GameObject:
   - component: {fileID: 977312298}
   - component: {fileID: 977312297}
   - component: {fileID: 977312295}
-  - component: {fileID: 977312302}
   - component: {fileID: 977312293}
   - component: {fileID: 977312292}
   m_Layer: 0
@@ -44717,7 +44798,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00030136108, y: -0.45114326}
+  m_Offset: {x: 0, y: -0.45}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -44855,39 +44936,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977312291}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.5, y: 3.25, z: 0}
+  m_LocalPosition: {x: -9.14, y: 3.25, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &977312302
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 977312291}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.005182743, y: -0.059600115}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.36771965, y: 0.8807998}
-  m_EdgeRadius: 0
 --- !u!1 &1148609595
 GameObject:
   m_ObjectHideFlags: 0
@@ -45169,6 +45224,7 @@ GameObject:
   - component: {fileID: 1372958340}
   - component: {fileID: 1372958341}
   - component: {fileID: 1372958342}
+  - component: {fileID: 1372958343}
   m_Layer: 0
   m_Name: snake
   m_TagString: Untagged
@@ -45216,7 +45272,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 55dfc38f4ec7ab04183f3050837147d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -45265,6 +45321,7 @@ MonoBehaviour:
   tm: {fileID: 506980494}
   prefab: {fileID: 113643941}
   gameFinished: 0
+  playerColliderOffsetY: 0
 --- !u!61 &1372958341
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -45275,10 +45332,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.27877522}
+  m_Offset: {x: 0, y: 0.25400782}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.25}
@@ -45289,7 +45346,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.44244957}
+  m_Size: {x: 0.7, y: 0.49198437}
   m_EdgeRadius: 0
 --- !u!114 &1372958342
 MonoBehaviour:
@@ -45304,6 +45361,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyScript: {fileID: 1372958340}
+  Player: {fileID: 977312291}
+--- !u!50 &1372958343
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372958337}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &1655277002
 GameObject:
   m_ObjectHideFlags: 0
@@ -45402,7 +45481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a81ca3d08030f0b429468dbe12dd132f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetRoomNr: 0
+  Player: {fileID: 977312291}
 --- !u!61 &1655277006
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -45420,8 +45499,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 2}
-    newSize: {x: 1, y: 2}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -45440,6 +45519,7 @@ GameObject:
   - component: {fileID: 2023800189}
   - component: {fileID: 2023800188}
   - component: {fileID: 2023800187}
+  - component: {fileID: 2023800190}
   m_Layer: 0
   m_Name: Square (1)
   m_TagString: Untagged
@@ -45459,7 +45539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 363c236db9625484d895f8c3a9e1cd89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snake: {fileID: 1372958339}
+  Snake: {fileID: 1372958337}
   isPressed: 0
 --- !u!212 &2023800188
 SpriteRenderer:
@@ -45528,6 +45608,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2023800190
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023800186}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &2059226600
 GameObject:
   m_ObjectHideFlags: 0
@@ -45539,6 +45645,7 @@ GameObject:
   - component: {fileID: 2059226603}
   - component: {fileID: 2059226602}
   - component: {fileID: 2059226601}
+  - component: {fileID: 2059226604}
   m_Layer: 0
   m_Name: Square (3)
   m_TagString: Untagged
@@ -45558,7 +45665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 363c236db9625484d895f8c3a9e1cd89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snake: {fileID: 1372958339}
+  Snake: {fileID: 1372958337}
   isPressed: 0
 --- !u!212 &2059226602
 SpriteRenderer:
@@ -45627,3 +45734,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2059226604
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059226600}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

@@ -1,7 +1,10 @@
 using UnityEngine;
 
-public class SceneChanger : MonoBehaviour
+public abstract class SceneChanger : MonoBehaviour
 {
+    [SerializeField]
+    protected GameObject Player;
+
     protected ProgressManager progressManager;
     protected SceneChangeManager sceneChangeManager;
 
@@ -11,21 +14,5 @@ public class SceneChanger : MonoBehaviour
         sceneChangeManager = SceneChangeManager.Instance;
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.name == "Player")
-        {
-            ChangeScene();
-        }
-    }
-
-    protected virtual void ChangeScene()
-    {
-        if (!sceneChangeManager.IsMainScene())
-        {
-            int sceneId = sceneChangeManager.CurrentSceneIndex;
-            progressManager.CompleteRoom(sceneId);
-            sceneChangeManager.LoadMainScene();
-        }
-    }
+    protected abstract void ChangeScene();
 }
