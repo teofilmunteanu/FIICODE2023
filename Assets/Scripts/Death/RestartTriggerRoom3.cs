@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RestartTrigger : MonoBehaviour
+public class RestartTriggerRoom3 : MonoBehaviour
 {
     private Scene scene;
     [SerializeField]

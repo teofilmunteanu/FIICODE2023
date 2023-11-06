@@ -17,10 +17,6 @@ public class ProgressManager : MonoBehaviour
             Instance = this;
 
             DontDestroyOnLoad(gameObject);
-
-            PaperCollectedInRoom = new bool[nrOfRooms];
-            //for testing I set first two to "true", only set the first one
-            CompletedRooms = new bool[] { false, false, false/*, false, false */};
         }
     }
     #endregion
@@ -33,14 +29,13 @@ public class ProgressManager : MonoBehaviour
 
     public void ResetProgress()
     {
-        CompletedRooms = new bool[] { false, false, false/*, false, false */};
+        CompletedRooms = new bool[nrOfRooms];
         PaperCollectedInRoom = new bool[nrOfRooms];
         SceneChangeManager.Instance.ResetPosition();
     }
 
     public void LoadProgress()
     {
-        //all of these should be taken from save file
         ProgressDTO progresDTO = SavesManager.LoadProgress();
 
         CompletedRooms = progresDTO.CompletedRooms;
@@ -58,13 +53,10 @@ public class ProgressManager : MonoBehaviour
 
             SavesManager.SaveProgress();
         }
-        //make prefabs that complete rooms
     }
 
     public void AddFoundPaper(int roomNr)
     {
         PaperCollectedInRoom[roomNr] = true;
-
-        //make paper prefabs
     }
 }

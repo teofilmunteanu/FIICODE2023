@@ -21,13 +21,9 @@ public class SceneChangerRoom : SceneChanger
     {
         if (!sceneChangeManager.IsMainScene())
         {
-            Debug.Log(sceneChangeManager.CurrentSceneIndex);
             int sceneId = sceneChangeManager.CurrentSceneIndex;
-
-            //null reference ??????
-            Debug.Log(progressManager.CompletedRooms[0]);
-            //progressManager.CompleteRoom(sceneId);
-            //sceneChangeManager.LoadMainScene();
+            progressManager.CompleteRoom(sceneId);
+            sceneChangeManager.LoadMainScene();
         }
     }
 }

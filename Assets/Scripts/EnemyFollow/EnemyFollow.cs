@@ -19,6 +19,7 @@ public class EnemyFollow : MonoBehaviour
     public float playerColliderOffsetY;
 
     private IEnumerator couritine;
+    private float snakeMoveDelay = 60.06f;
 
     void Start()
     {
@@ -62,7 +63,6 @@ public class EnemyFollow : MonoBehaviour
         if (playerPositions.Count > 50 && !execute)
         {
             execute = true;
-            //InvokeRepeating("Following", 0.5f, 1f * Time.deltaTime);
             StartCoroutine(couritine);
         }
 
@@ -77,7 +77,7 @@ public class EnemyFollow : MonoBehaviour
             }
         }
 
-        if (buttonsPressed == buttons.Length - 4)
+        if (buttonsPressed == buttons.Length)
         {
             StopCoroutine(couritine);
             tm.enabled = false;
@@ -95,12 +95,12 @@ public class EnemyFollow : MonoBehaviour
     {
         int i = 0;
 
-        while (true)
+        while (!gameFinished)
         {
             if (playerPositions.Count > 2)
             {
                 transform.position = playerPositions[2];
-                //GameObject newObject;
+
                 i++;
                 if (i % 3 == 0)
                 {
@@ -108,9 +108,8 @@ public class EnemyFollow : MonoBehaviour
                     i = i / 3;
                 }
                 playerPositions.RemoveAt(0);
-                //yield return new WaitForSeconds(.1f);
             }
-            yield return new WaitForSeconds(1f * Time.fixedDeltaTime);
+            yield return new WaitForSeconds(1f / snakeMoveDelay);
         }
 
     }
