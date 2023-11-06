@@ -9,9 +9,10 @@ public class PressedButton : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject == Snake)
+        if (collider.gameObject == Snake && !isPressed)
         {
             isPressed = true;
+            Room3ButtonManager.Instance.ButtonPressed();
         }
     }
 }

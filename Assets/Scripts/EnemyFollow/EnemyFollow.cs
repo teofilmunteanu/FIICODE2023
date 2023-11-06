@@ -1,13 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class EnemyFollow : MonoBehaviour
 {
     [SerializeField] PlayerMovement2Dmodified playerMovementScript;
-    [SerializeField] GameObject[] buttons;
-    [SerializeField] TilemapRenderer tm;
 
     List<Vector2> playerPositions;
     bool execute = false;
@@ -60,34 +57,17 @@ public class EnemyFollow : MonoBehaviour
         currentRot.z = 0;
         transform.rotation = Quaternion.Euler(currentRot);
 
-        if (playerPositions.Count > 50 && !execute)
+        if (!Room3ButtonManager.Instance.gameFinished)
         {
-            execute = true;
-            StartCoroutine(couritine);
-        }
-
-
-        buttonsPressed = 0;
-
-        for (int i = 0; i < buttons.Length; i++)
-        {
-            if (buttons[i].GetComponent<PressedButton>().isPressed)
+            if (playerPositions.Count > 50 && !execute)
             {
-                buttonsPressed++;
+                execute = true;
+                StartCoroutine(couritine);
             }
         }
-
-        if (buttonsPressed == buttons.Length)
+        else
         {
             StopCoroutine(couritine);
-            tm.enabled = false;
-
-            gameFinished = true;
-
-            foreach (var collider in tm.GetComponentsInChildren<Collider2D>())
-            {
-                collider.enabled = false;
-            }
         }
     }
 
@@ -109,7 +89,7 @@ public class EnemyFollow : MonoBehaviour
                 }
                 playerPositions.RemoveAt(0);
             }
-            yield return new WaitForSeconds(1f / snakeMoveDelay);
+            yield return new WaitForSeconds(Time.fixedDeltaTime);
         }
 
     }
