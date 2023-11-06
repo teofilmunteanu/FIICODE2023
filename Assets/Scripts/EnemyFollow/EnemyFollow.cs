@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,13 +9,12 @@ public class EnemyFollow : MonoBehaviour
     bool execute = false;
     public GameObject prefab;
 
-    int buttonsPressed;
-    public bool gameFinished;
-
     public float playerColliderOffsetY;
 
-    private IEnumerator couritine;
-    private float snakeMoveDelay = 60.06f;
+    private float snakeSpeed = 22f;
+
+    bool firstFollowDone;
+    float instantiateDelay = 0;
 
     void Start()
     {
@@ -38,10 +36,6 @@ public class EnemyFollow : MonoBehaviour
             Vector2 newPosition = (Vector2)transform.position + i * positionIncrement;
             playerPositions.Add(newPosition);
         }
-
-        gameFinished = false;
-
-        couritine = Following();
     }
 
     private void FixedUpdate()
@@ -51,47 +45,74 @@ public class EnemyFollow : MonoBehaviour
             Vector2 playerLegsPos = new Vector2(playerMovementScript.rb.position.x, playerMovementScript.rb.position.y + playerColliderOffsetY);
             playerPositions.Add(playerLegsPos);
         }
-        transform.right = new Vector3(playerPositions[0].x, playerPositions[0].y, 0) - transform.position;
-
-        Vector3 currentRot = transform.rotation.eulerAngles;
-        currentRot.z = 0;
-        transform.rotation = Quaternion.Euler(currentRot);
 
         if (!Room3ButtonManager.Instance.gameFinished)
         {
-            if (playerPositions.Count > 50 && !execute)
+            if (playerPositions.Count > 50 || firstFollowDone)
             {
-                execute = true;
-                StartCoroutine(couritine);
+                if (!firstFollowDone && playerPositions.Count > 50)
+                {
+                    firstFollowDone = true;
+                }
+
+                FollowPlayer();
+            }
+        }
+    }
+
+    private void FollowPlayer()
+    {
+        if (playerPositions.Count > 2)
+        {
+            SetSnakeDirection();
+
+            transform.position = (Vector3)playerPositions[2];
+
+            instantiateDelay += snakeSpeed * Time.deltaTime;
+            if (Mathf.Floor(instantiateDelay) % 3 == 0)
+            {
+                Instantiate(prefab, playerPositions[0], Quaternion.identity);
+                instantiateDelay /= 3;
+            }
+            playerPositions.RemoveAt(0);
+        }
+    }
+
+    private void SetSnakeDirection()
+    {
+        Vector2 movementDirection = (playerPositions[2] - (Vector2)transform.position).normalized;
+
+        Vector3 currentRot = transform.rotation.eulerAngles;
+
+        if (Mathf.Abs(movementDirection.x) > Mathf.Abs(movementDirection.y))
+        {
+            currentRot.z = 0;
+
+            if (movementDirection.x > 0)
+            {
+                currentRot.y = 0;
+            }
+            else if (movementDirection.x < 0)
+            {
+                currentRot.y = 180;
             }
         }
         else
         {
-            StopCoroutine(couritine);
-        }
-    }
+            currentRot.y = 0;
 
-    IEnumerator Following()
-    {
-        int i = 0;
-
-        while (!gameFinished)
-        {
-            if (playerPositions.Count > 2)
+            if (movementDirection.y > 0)
             {
-                transform.position = playerPositions[2];
-
-                i++;
-                if (i % 3 == 0)
-                {
-                    Instantiate(prefab, playerPositions[0], Quaternion.identity);
-                    i = i / 3;
-                }
-                playerPositions.RemoveAt(0);
+                currentRot.z = 90;
             }
-            yield return new WaitForSeconds(Time.fixedDeltaTime);
+            else if (movementDirection.y < 0)
+            {
+                currentRot.z = -90;
+            }
         }
 
+
+        transform.rotation = Quaternion.Euler(currentRot);
     }
 }
 
