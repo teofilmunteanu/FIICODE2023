@@ -1,7 +1,7 @@
 # Intuition-FIICODE2023-Game
 Puzzle game based on intuition, or more like, the rejection of it.
 
-Gameplay:
+Gameplay (SOUND ON FOR ROOM2):
 
 https://github.com/teofilmunteanu/Intuition-FIICODE2023-Game/assets/53564633/5c06bf7f-72c4-4f2a-a152-ca6c067fa1b3
 
