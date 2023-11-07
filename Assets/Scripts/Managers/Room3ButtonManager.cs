@@ -21,6 +21,7 @@ public class Room3ButtonManager : MonoBehaviour
 
     [SerializeField] GameObject[] buttons;
     [SerializeField] TilemapRenderer wallsTilemap;
+    [SerializeField] GameObject finish;
 
     private int buttonsPressedCount;
 
@@ -42,7 +43,9 @@ public class Room3ButtonManager : MonoBehaviour
 
         gameFinished = true;
 
-        foreach (var collider in wallsTilemap.GetComponentsInChildren<Collider2D>())
+        finish.SetActive(true);
+
+        foreach (var collider in wallsTilemap.GetComponents<Collider2D>())
         {
             collider.enabled = false;
         }

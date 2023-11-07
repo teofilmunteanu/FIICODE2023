@@ -17,8 +17,6 @@ namespace Assets.Scripts.Managers
             {
                 Instance = this;
             }
-
-            DontDestroyOnLoad(gameObject);
         }
         #endregion
 

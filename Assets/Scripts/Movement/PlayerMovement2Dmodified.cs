@@ -7,6 +7,7 @@ public class PlayerMovement2Dmodified : MonoBehaviour
 
     public float moveSpeed = 5f;
 
+    [NonSerialized]
     public Rigidbody2D rb;
 
     public Vector2 movement;
@@ -88,6 +89,6 @@ public class PlayerMovement2Dmodified : MonoBehaviour
     void FixedUpdate()
     {
         //Movement
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
     }
 }

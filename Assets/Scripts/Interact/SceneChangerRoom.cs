@@ -1,7 +1,5 @@
 using UnityEngine;
 
-// MAKE SEPARATE CLASS FOR RoomSceneChanger
-
 public class SceneChangerRoom : SceneChanger
 {
     protected override void Start()

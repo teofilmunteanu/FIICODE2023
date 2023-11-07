@@ -64,8 +64,6 @@ public class EnemyFollow : MonoBehaviour
     {
         if (playerPositions.Count > 2)
         {
-            SetSnakeDirection();
-
             transform.position = (Vector3)playerPositions[2];
 
             instantiateDelay += snakeSpeed * Time.deltaTime;
@@ -75,6 +73,9 @@ public class EnemyFollow : MonoBehaviour
                 instantiateDelay /= 3;
             }
             playerPositions.RemoveAt(0);
+
+
+            SetSnakeDirection();
         }
     }
 

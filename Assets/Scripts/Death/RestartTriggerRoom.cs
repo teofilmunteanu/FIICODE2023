@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RestartTriggerRoom3 : MonoBehaviour
+public class RestartTriggerRoom : MonoBehaviour
 {
     private Scene scene;
 
@@ -13,9 +13,10 @@ public class RestartTriggerRoom3 : MonoBehaviour
         scene = SceneManager.GetActiveScene();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.gameObject == Player && !Room3ButtonManager.Instance.gameFinished)
+
+        if (collider.gameObject == Player)
         {
             SceneManager.LoadScene(scene.name);
         }
